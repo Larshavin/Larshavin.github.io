@@ -2,9 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://kubesy.com/categories/</loc>
-  </url><url>
     <loc>http://kubesy.com/</loc>
+    <lastmod>2023-07-17T21:29:25+09:00</lastmod>
+  </url><url>
+    <loc>http://kubesy.com/posts/my-first-post/</loc>
+    <lastmod>2023-07-17T21:29:25+09:00</lastmod>
+  </url><url>
+    <loc>http://kubesy.com/posts/</loc>
+    <lastmod>2023-07-17T21:29:25+09:00</lastmod>
+  </url><url>
+    <loc>http://kubesy.com/archives/</loc>
+  </url><url>
+    <loc>http://kubesy.com/categories/</loc>
   </url><url>
     <loc>http://kubesy.com/search/</loc>
   </url><url>
