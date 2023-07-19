@@ -28,5 +28,7 @@
     <loc>http://kubesy.com/categories/</loc>
   </url><url>
     <loc>http://kubesy.com/search/</loc>
+  </url><url>
+    <loc>http://kubesy.com/posts/vue.js/vue2/</loc>
   </url>
 </urlset>

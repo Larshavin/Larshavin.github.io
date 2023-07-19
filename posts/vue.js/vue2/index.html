@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Vue.js로 블로그 UI 만들기 (2) | Geronimo!</title>
+<meta name="keywords" content="vue.js, blog">
+<meta name="description" content="들어가기 앞서 :
+부끄럽지만, 이런저런 내용들 중 많이 부분을 경험적인 학습 &#43; chatGPT가 알려주는 정보로 이루어냈습니다. 하지만 이런 내용들은 Vue 공식 홈페이지에 자세하고 깊은 수준으로 잘 문서화 되어있기 때문에 꾸준히 문서를 학습하는 것이 장기적으로 도움이 될 듯 합니다.
+또한 코드를 완벽하게 다루지 못하기 때문에 부분 부분 “얘는 왜 저렇게 코드를 짜는 거지?” 하실 수도 있습니다.
+Navbar 만들기 src/views 에 파일을 다음과 같이 형성하고, vue-Router 의 index.js 파일의 내용을 수정 해봅시다. 새로 형성한 *.">
+<meta name="author" content="">
+<link rel="canonical" href="http://kubesy.com/posts/vue.js/vue2/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.3613efbd0b1772781e8f49935e973cae632a7f61471c05b17be155505ccf87b5.css" integrity="sha256-NhPvvQsXcngej0mTXpc8rmMqf2FHHAWxe&#43;FVUFzPh7U=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="http://kubesy.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://kubesy.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://kubesy.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://kubesy.com/apple-touch-icon.png">
+<link rel="mask-icon" href="http://kubesy.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Vue.js로 블로그 UI 만들기 (2)" />
+<meta property="og:description" content="들어가기 앞서 :
+부끄럽지만, 이런저런 내용들 중 많이 부분을 경험적인 학습 &#43; chatGPT가 알려주는 정보로 이루어냈습니다. 하지만 이런 내용들은 Vue 공식 홈페이지에 자세하고 깊은 수준으로 잘 문서화 되어있기 때문에 꾸준히 문서를 학습하는 것이 장기적으로 도움이 될 듯 합니다.
+또한 코드를 완벽하게 다루지 못하기 때문에 부분 부분 “얘는 왜 저렇게 코드를 짜는 거지?” 하실 수도 있습니다.
+Navbar 만들기 src/views 에 파일을 다음과 같이 형성하고, vue-Router 의 index.js 파일의 내용을 수정 해봅시다. 새로 형성한 *." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://kubesy.com/posts/vue.js/vue2/" /><meta property="article:section" content="posts" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vue.js로 블로그 UI 만들기 (2)"/>
+<meta name="twitter:description" content="들어가기 앞서 :
+부끄럽지만, 이런저런 내용들 중 많이 부분을 경험적인 학습 &#43; chatGPT가 알려주는 정보로 이루어냈습니다. 하지만 이런 내용들은 Vue 공식 홈페이지에 자세하고 깊은 수준으로 잘 문서화 되어있기 때문에 꾸준히 문서를 학습하는 것이 장기적으로 도움이 될 듯 합니다.
+또한 코드를 완벽하게 다루지 못하기 때문에 부분 부분 “얘는 왜 저렇게 코드를 짜는 거지?” 하실 수도 있습니다.
+Navbar 만들기 src/views 에 파일을 다음과 같이 형성하고, vue-Router 의 index.js 파일의 내용을 수정 해봅시다. 새로 형성한 *."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://kubesy.com/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Vue.js로 블로그 UI 만들기 (2)",
+      "item": "http://kubesy.com/posts/vue.js/vue2/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Vue.js로 블로그 UI 만들기 (2)",
+  "name": "Vue.js로 블로그 UI 만들기 (2)",
+  "description": "들어가기 앞서 :\n부끄럽지만, 이런저런 내용들 중 많이 부분을 경험적인 학습 + chatGPT가 알려주는 정보로 이루어냈습니다. 하지만 이런 내용들은 Vue 공식 홈페이지에 자세하고 깊은 수준으로 잘 문서화 되어있기 때문에 꾸준히 문서를 학습하는 것이 장기적으로 도움이 될 듯 합니다.\n또한 코드를 완벽하게 다루지 못하기 때문에 부분 부분 “얘는 왜 저렇게 코드를 짜는 거지?” 하실 수도 있습니다.\nNavbar 만들기 src/views 에 파일을 다음과 같이 형성하고, vue-Router 의 index.js 파일의 내용을 수정 해봅시다. 새로 형성한 *.",
+  "keywords": [
+    "vue.js", "blog"
+  ],
+  "articleBody": "들어가기 앞서 :\n부끄럽지만, 이런저런 내용들 중 많이 부분을 경험적인 학습 + chatGPT가 알려주는 정보로 이루어냈습니다. 하지만 이런 내용들은 Vue 공식 홈페이지에 자세하고 깊은 수준으로 잘 문서화 되어있기 때문에 꾸준히 문서를 학습하는 것이 장기적으로 도움이 될 듯 합니다.\n또한 코드를 완벽하게 다루지 못하기 때문에 부분 부분 “얘는 왜 저렇게 코드를 짜는 거지?” 하실 수도 있습니다.\nNavbar 만들기 src/views 에 파일을 다음과 같이 형성하고, vue-Router 의 index.js 파일의 내용을 수정 해봅시다. 새로 형성한 *.vue 파일에는 filename 정도를 넣어줍시다. 여기서 파일의 경로중 ‘@’는 레포지토리 최상단 vite.config.js에서 alias로 설정된 ./src 의 경로를 의미하는 기호입니다.\n$ ls src/views AboutView.vue ArchiveView.vue HomeView.vue SearchView.vue TagView.vue import { createRouter, createWebHistory } from 'vue-router' import HomeView from '@/views/HomeView.vue' import SearchView from '@/views/SearchView.vue' import ArchiveView from '@/views/ArchiveView.vue' import TagView from '@/views/TagView.vue' const router = createRouter({ history: createWebHistory(import.meta.env.BASE_URL), routes: [ { path: '/', name: 'home', component: HomeView }, { path: '/search', name: 'search', component: SearchView }, { path: '/archive', name: 'archive', component: ArchiveView }, { path: '/tag', name: 'tag', component: TagView }, ] }) export default router 그리고 NavBar.vue를 다음과 같이 수정해봅시다.\n{{ props.title }} Search Archive Tag 추가된 요소가 많이 생겼습니다. 하나 하나 뜯어서 보도록 합시다. 우선 script 부분입니다.\n\u003cscript setup\u003e import { RouterLink } from 'vue-router' const props = defineProps({ title: { type: String, required: true, }, toggle: { type: Boolean, required: true, }, }) const emit = defineEmits(['toggle-change']) const toggleChange = () =\u003e { emit('toggle-change') console.log('toggleChange') } \u003c/script\u003e 저는 이 컴포넌트에, vue-router의 기능 중 하나인 RouterLink를 import 했습니다. RouterLink는 위의 Template 쪽에서 html의 a 태그를 대신 해줄 또 다른 컴포넌트 입니다.\n그리고 vue의 내장 기능 중 하나인 defineProps를 사용했습니다. 특정 버전부터 따로 Import 하지 않아도 사용할 수 있다고 합니다. defineProps는 부모 컴포넌트로부터 특정 변수나 인자들을 받을 때를 위해 사용하는 기능 입니다.\n여기서 부모 컴포넌트는, NavBar.vue를 사용할 App.vue가 될 것이고 자연스럽게 NavBar.vue는 자식 컴포넌트가 됩니다.\n정의된 title과 toggle이라는 요소의 값이 각각의 변수 타입에 맞게 부모로부터 흘러 들어옵니다. required로 부모가 자식 컴포넌트에게 필수적으로 전달해야 함을 명시했습니다. 하지만 defineProps 단일 방향으로 데이터가 흐릅니다. 만약 자식이 부모에게 무언가 값의 변화를 알리고 싶다면, defineEmits을 사용해야 합니다.\nconst toggleChange 에 정의된 함수 아래, 함수가 실행되면, emit('toggle-change') 가 실행되는데, 부모 컴포넌트는 안에 정의된 'toggle-change' 를 통해 자식이 전달한 어떤 이벤트를 감지 합니다. 그 과정은 App.vue를 수정하는 부분에서 다시 살펴 보겠습니다.\n\u003ctemplate\u003e \u003cdiv\u003e \u003cdiv class=\"flex justify-content-between align-items-center\"\u003e \u003cdiv class=\"flex align-items-center\"\u003e \u003cdiv class=\"text-2xl ml-2 font-bold\"\u003e \u003cRouterLink to=\"/search\" class=\"router\"\u003e {{ props.title }} \u003c/RouterLink\u003e \u003c/div\u003e \u003csvg v-if=\"props.toggle\" class=\"ml-2 svg-moon cursor-pointer\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" @click=\"toggleChange\"\u003e \u003cpath d=\"M10.719 2.082c-2.572 2.028-4.719 5.212-4.719 9.918 0 4.569 1.938 7.798 4.548 9.895-4.829-.705-8.548-4.874-8.548-9.895 0-5.08 3.808-9.288 8.719-9.918zm1.281-2.082c-6.617 0-12 5.383-12 12s5.383 12 12 12c1.894 0 3.87-.333 5.37-1.179-3.453-.613-9.37-3.367-9.37-10.821 0-7.555 6.422-10.317 9.37-10.821-1.74-.682-3.476-1.179-5.37-1.179zm0 10.999c1.437.438 2.562 1.564 2.999 3.001.44-1.437 1.565-2.562 3.001-3-1.436-.439-2.561-1.563-3.001-3-.437 1.436-1.562 2.561-2.999 2.999zm8.001.001c.958.293 1.707 1.042 2 2.001.291-.959 1.042-1.709 1.999-2.001-.957-.292-1.707-1.042-2-2-.293.958-1.042 1.708-1.999 2zm-1-9c-.437 1.437-1.563 2.562-2.998 3.001 1.438.44 2.561 1.564 3.001 3.002.437-1.438 1.563-2.563 2.996-3.002-1.433-.437-2.559-1.564-2.999-3.001z\" /\u003e \u003c/svg\u003e \u003csvg v-else class=\"ml-2 svg-sun cursor-pointer\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" @click=\"toggleChange\"\u003e \u003cpath d=\"M4.069 13h-4.069v-2h4.069c-.041.328-.069.661-.069 1s.028.672.069 1zm3.034-7.312l-2.881-2.881-1.414 1.414 2.881 2.881c.411-.529.885-1.003 1.414-1.414zm11.209 1.414l2.881-2.881-1.414-1.414-2.881 2.881c.528.411 1.002.886 1.414 1.414zm-6.312-3.102c.339 0 .672.028 1 .069v-4.069h-2v4.069c.328-.041.661-.069 1-.069zm0 16c-.339 0-.672-.028-1-.069v4.069h2v-4.069c-.328.041-.661.069-1 .069zm7.931-9c.041.328.069.661.069 1s-.028.672-.069 1h4.069v-2h-4.069zm-3.033 7.312l2.88 2.88 1.415-1.414-2.88-2.88c-.412.528-.886 1.002-1.415 1.414zm-11.21-1.415l-2.88 2.88 1.414 1.414 2.88-2.88c-.528-.411-1.003-.885-1.414-1.414zm2.312-4.897c0 2.206 1.794 4 4 4s4-1.794 4-4-1.794-4-4-4-4 1.794-4 4zm10 0c0 3.314-2.686 6-6 6s-6-2.686-6-6 2.686-6 6-6 6 2.686 6 6z\" /\u003e \u003c/svg\u003e \u003c/div\u003e \u003cdiv class=\"mr-2\"\u003e \u003cRouterLink to=\"/search\" class=\"router mr-2\"\u003eSearch\u003c/RouterLink\u003e \u003cRouterLink to=\"/archive\" class=\"router mr-2\"\u003eArchive\u003c/RouterLink\u003e \u003cRouterLink to=\"/tag\" class=\"router\"\u003eTag\u003c/RouterLink\u003e \u003c/div\u003e \u003c/div\u003e \u003c/div\u003e \u003c/template\u003e template 쪽은 무언가 간단해보이면서도 이것저것이 많이 붙어 있습니다. 저는 개인적으로 html의 div 태그를 거의 유일하다시피하게 사용합니다. 그래서 조금 가시성이 안 좋아보이긴 하는데, 좋은 작성 방법을 추천해주시면 감사 하겠습니다.\n아무튼, 각종 div에는 class들이 달려있습니다. 그 class들에는 primeFlex에 정의된 것도 있고, 제가 style에서 수동으로 만든 것도 붙어 있습니다. 이 영역들은 기본적인 CSS 문법에 관련된 것들이기 때문에 깊게 설명들이지는 않겠습니다. primeFlex 사이트에 들어가보면, 정의된 클래스와 해당하는 css 문법이 나열되어 있습니다. 예를들어 위의 코드 중 제가 사용한, justify-content-between는 css에서 justify-content: space-between와 매칭 됩니다.\n그 다음은 {{ props.title }} 입니다. vue.js에서는 html에 javscript의 변수를 표현하기 위해서는 {{ }} 를 사용 합니다.\n저는 총 네가지의 RouterLink 를 사용했습니다. 이곳에서의 to는 url의 경로를 나타냅니다. 그리고 svg쪽을 잘 살펴보시면 @click 이라는 built-ins directive가 있습니다. @click은 v-on:click의 줄임 표현입니다.\nbuilt-in directive 중 또 많이 사용하는 것을 적용해 봅시다. v-for 입니다. 우선 코드에 두가지 요소를 추가합니다. RouterLink가 같은 형식으로 반복되는 경향을 코드 상에서 최소화 시켜볼 겁니다.\n\u003ctemplate\u003e ... \u003cdiv class=\"flex gap-4\"\u003e \u003cRouterLink v-for=\"path in paths\" :key=\"path.name\" :to=\"path.path\" class=\"router flex align-items-center \"\u003e {{ path.name }} \u003c/RouterLink\u003e \u003c/div\u003e ... \u003c/template\u003e \u003cscript setup\u003e import { ref } from 'vue' ... const paths = ref([ { name: 'Search', path: '/search', }, { name: 'Archive', path: '/archive', }, { name: 'Tag', path: '/tag', }, ]) \u003c/script\u003e 코드를 살펴보시면, 주석처리 해놓은 원래의 RouterLink 파트가 내용만 바뀌고 반복되는 점을 찾아서 v-for의 기능을 사용해 코드를 좀 더 수정하기 편하게 만들었습니다. v-for 내부에는 “path in paths” 라는 부분이 있는데, 아래 script 단에서 정의한 변수 paths를 사용했음을 짐작할 수 있습니다.\n언젠가 제가 vue를 공부할까, react를 공부할까 했을 때, 이런 점이 vue의 간편한 요소라고 했던 글이 기억나네요.\n여기서 ref 가 등장합니다. relative 성을 다루기 위해 사용하는 API 중 하나로, 화면 상에서 동적으로 변화시킬 변수들을 ref로 선언하는 것 입니다. 이 변수에 값에 접근하기 위해서는 .value 를 뒤에 붙여서 사용해야 합니다. 다만, template 쪽 에서 사용할 때는 그럴 필요가 없습니다. 예를 들면 {{ var.value }}가 아닌 {{ var }}만 사용해도 된다는 의미입니다.\n여기서 기능을 하나 더 추가 해봅시다. 사용자가 RouterLink에 해당하는 부분을 클릭 했을 때 해당하는 url이 바뀐다는 것은 저번 게시글에서 확인해 보았습니다. 그럼 이제 제가 해보고 싶은 것은 아래 사진처럼 특정 url로 들어갔을 때 해당하는 부분에만 강조를 주고 싶습니다.\n그렇다면 현재의 vue-router의 path를 프로그래밍적 currentPath 라는 이름으로 뽑아 낸 다음, 위에서 새로 만든 RouterLink에 조건을 활용해서 path.name 과 비교 후 클래스나 스타일을 추가 해야할 것 같습니다. vue-router 문서를 뒤적거리며 그런 기능이 있나 한 번 살펴 볼까요?\n\u003cscript setup\u003e ... import { RouterLink, useRoute } from 'vue-router' const route = useRoute() ... \u003cscript\u003e useRoute를 사용하면 현재 경로의 정보를 얻어낼 수 있습니다! 이제 선택적으로 스타일을 구현해보도록 하겠습니다. bind class(혹은 style) 라는 것을 사용하면 됩니다.\n\u003cTemplate\u003e ... \u003cdiv class=\"flex gap-4\"\u003e \u003cRouterLink v-for=\"path in paths\" :key=\"path.name\" :to=\"path.path\" class=\"router flex align-items-center\"\u003e \u003cdiv :class=\"isActive(path.path)\"\u003e {{ path.name }} \u003c/div\u003e \u003c/RouterLink\u003e \u003c/div\u003e ... \u003c/Template\u003e \u003cscript\u003e ... const isActive = (path) =\u003e { return { 'border-bottom-1 font-bold': path === route.path, } }; \u003c/script\u003e IsActive 의 함수를 사용하면, { 'border-bottom-1 font-bold': path === route.path, } 를 리턴해 줍니다. 이 정도면 얼추 대강의 NavBar 가 준비 된 것 같습니다.\n그럼 이제 App.vue에서 위의 컴포넌트를 실행하고 더해 화면의 골격 까지도 다음 코드를 이용해 잡아봅시다.\n\u003cscript setup\u003e import { ref, onMounted } from 'vue'; import NavBar from './components/NavBar.vue'; const navbarRef = ref(null); const contentHeight = ref(null); onMounted(() =\u003e { // Get the height of the navbar_div element if (navbarRef.value) { contentHeight.value = `calc(100vh - ${navbarRef.value.offsetHeight}px)` } }); const toggleDarKMode = ref(false); \u003c/script\u003e \u003ctemplate\u003e \u003cdiv id=\"main\" :class=\"[toggleDarKMode ? 'surface-900 text-300' : 'bg-blue-50']\" style=\"width: 100%; height: 100vh; min-width: 360px;\"\u003e \u003cdiv id=\"navbar_div\" class=\"flex flex-column align-items-center\" ref=\"navbarRef\"\u003e \u003cNavBar class=\"navbar my-3\" title=\"Geronimo! ~\" :toggle=\"toggleDarKMode\" @toggle-change=\"toggleDarKMode = !toggleDarKMode\" /\u003e \u003c/div\u003e \u003cdiv id=\"content_div\" class=\"flex flex-column align-items-center\"\u003e \u003cdiv class=\"border-1 content\" :style=\"{ height: contentHeight }\"\u003e \u003cRouterView /\u003e \u003c/div\u003e \u003c/div\u003e \u003c/div\u003e \u003c/template\u003e \u003cstyle\u003e @media (min-width:360px) and (max-width:800px) { .content { width: 100%; } .navbar { width: 100%; } } @media (min-width:800px) and (max-width:1072px) { .content { width: 800px; } .navbar { width: 800px; } } @media (min-width:1072px) { .content { width: 800px; } .navbar { width: 1072px; } } \u003c/style\u003e 다시 한 번 코드에 대한 분석을 해봅시다.\n가장 먼저 style을 체크하면, @media를 활용한 반응형 골격의 정도를 정의해 놓았습니다. 그 다음 template에서 정의한 클래스를 기반으로 화면의 구성비율을 결정했습니다. id로 div 태그를 구별해놓았는데 최상단을 main으로 두고, 밑으로 navbar_div, content_div 의 영역을 분리하여 적절한 width와 height를 여러 방식을 이용해 결정하고 있습니다. ( :stlye을 활용한 부분을 살펴보시면 좋을 것 같습니다 ) 제 개인적으로 css에서 제일 어려운 부분이 이런 위치 결정인 것 같습니다.\n클래스 중 ‘border-1’는 실선 테두리를 그려주는 primeFlex의 기능입니다. 위치 혹은 크기를 결정할 때 저는 테두리를 그려 놓고 체크해보는 편 입니다.\n다른 부분은 슬금슬금 넘어가도, 아래 내용은 확인해보고 가야겠습니다.\n\u003cscript\u003e import { ref, onMounted } from 'vue'; import NavBar from './components/NavBar.vue'; ... onMounted(() =\u003e { // Get the height of the navbar_div element if (navbarRef.value) { contentHeight.value = `calc(100vh - ${navbarRef.value.offsetHeight}px)` } }); const toggleDarKMode = ref(false); \u003c/script\u003e \u003ctemplate\u003e ... \u003cNavBar class=\"navbar my-3\" title=\"Geronimo! ~\" :toggle=\"toggleDarKMode\" @toggle-change=\"toggleDarKMode = !toggleDarKMode\" /\u003e ... \u003c/template\u003e 첫 번째로는 onMounted 입니다. Vue.js api 중 reactivity 와 lifecycle 에 대한 기능들이 있다는 걸 확인 했었는데요, onMounted는 lifecycle에 해당하는 기능입니다. 링크 안 그림에서 볼 수 있다시피, 렌더링 과정 중 정말 많은 시점에서 어떤 일을 할지 결정 할 수가 있습니다. 저는 그리 깊은 활용까지는 해보지는 못했고, 주로 onMounted 많이 사용했던 것 같습니다. 여기서는 특정 div의 height 값을 결정 하는 데 사용하고 있습니다.\n그리고 NavBar 컴포넌트의 활용입니다. title과 :toggle, @toggle-change 라는 directive를 활용해서 dataProps에 전달할 값을 설정하고, 컴포넌트에게서 수신 받은 이벤트를 처리하기도 합니다.\n특히 @toggle-change=\"toggleDarKMode = !toggleDarKMode\"에서 @toggle-change를 이용해 NavBar 안에 있는 svg가 클릭 될 때 마다 toggleDarKMode의 boolean 값이 참과 거짓을 반복하게 만든 점을 확인하실 수 있을실 겁니다. 그리고 이 toggleDarKMode 값을 이용해 저는 다시 한 번 bind class 를 활용했습니다. :class=\"[toggleDarKMode ? 'surface-900 text-300' : 'bg-blue-50']\"\n흠 근데 아직 뭔가 이상해요 … 뭘까요 … 아! footer가 필요하겠네요. footer를 새로운 컴포넌트로 만들어서 추가해도 되고, 아래 사진처럼 정말 간략하게 추가해도 될 것 같습니다. 위의 내용을 참고하여 한 번 컴포넌트로 만들어 보시는 게 어떨까요? ( 전 빠르게 진행하고자 따로 컴포넌트를 만들지 않고 넘어갔습니다)\n이제 기본 골자는 완성 했습니다. 이제 메인 화면을 꾸며볼 차례입니다.\n메인 화면 꾸미기 메인 화면에는 크게 두 영역으로 나뉘어 있습니다.\n제 프로필이 간략하게 표시된 상단의 영역 하나와, 아래 게시글들이 카드 형식으로 나열된 부분 하나 입니다. 그리고 또 휴고 블로그에서 /posts 라는 경로로 가보면 제 프로필 영역은 사라지고 오로지 카드들이 나열된 형태만 남아있습니다.\n그럼 각각의 영역을 프로필, 포스트 별로 컴포넌트화 시켜서 HomeView.vue 안 에 구성해보는 게 어떨까 싶어집니다. 또한 vue-router에 /posts 라는 경로를 추가 해줘야겠습니다. 그 외의 작업들은 앞선 내용들과 얼추 비슷하다고 봅니다.\n$ ls src/components/ NavBar.vue PostsComponent.vue ProfileComponent.vue icons $ ls src/views AboutView.vue ArchiveView.vue HomeView.vue PostsView.vue SearchView.vue TagView.vue ProfileComponent.vue 입니다.\n\u003ctemplate\u003e \u003cdiv class=\"profile\"\u003e \u003ch1 class=\"mb-3\"\u003e {{ props.title }} \u003c/h1\u003e \u003cdiv v-html=\"introduce\" class=\"text-500\" style=\"line-height:170%;\"\u003e\u003c/div\u003e \u003cdiv class=\" flex mt-4 gap-3\"\u003e \u003ca href=\"https://github.com/Larshavin\" target=\"_blank\" style=\"color: inherit; \"\u003e \u003ci class=\"pi pi-github\" style=\"font-size: 1.6rem\"\u003e\u003c/i\u003e \u003c/a\u003e \u003ca href=\"https://www.instagram.com/larshavin/\" target=\"_blank\" style=\"color: inherit; \"\u003e \u003ci class=\"pi pi-instagram\" style=\"font-size: 1.6rem\"\u003e\u003c/i\u003e \u003c/a\u003e \u003c/div\u003e \u003c/div\u003e \u003c/template\u003e \u003cscript setup\u003e import { computed } from 'vue' const props = defineProps({ title: { type: String, required: true, }, introduce: { type: String, required: true, }, }) const introduce = computed(() =\u003e { return props.introduce.replace(/\\n/g, '\n') }) \u003c/script\u003e \u003cstyle scoped\u003e .profile { margin: 8rem 2rem 1rem 2rem; } \u003c/style\u003e 이 코드에서 설명드려야 할 부분이 있다면 primeIcon 과 v-html, computed 가 사용 되었다 정도겠습니다.\n프론트엔드를 만지다보면 Icon이 필요할 때가 분명 존재 합니다. 주로 많이 쓰이는 것이 Font Awesome 겠지만, primeIcon 이라는 것도 있습니다. 저번 게시글에서 소리 소문 없이 설치하긴 했습니다만, primeVue와 연동하여 쓰기에 괜찮습니다. 물론 그 양이 그렇게 많지는 않아서 저는 font awesome과 함께 사용하는 편 입니다.\nv-html은 {{ 변수 }} 로 보통 표현하는 것 대신, html 문법이 만족하게 표현해줍니다. 만약 string 변수에 “\\n” 가 들어갔을 때 {{ 변수 }}는 이 \\n를 표현하지 못합니다. 또한 아래 코드를 사용하여 “\\n”가 로 바뀐 상태라도 그 적용이 안되는 걸 확인 할 수 있는데, v-html을 사용하면 쉽게 해결 됩니다.\nconst introduce = computed(() =\u003e { return props.introduce.replace(/\\n/g, '\n') }) computed는 vue에서 보통 함수(메소드)로 많이 사용한 것들에 대한 대체로 사용이 가능합니다. 다만 간단한 연산일 때만 이용하는 것이 좋습니다. 특히 템플릿 안에서 자바스크립트 계산을 진행해야 할 때가 종종 오곤하는데, 그럴 때 마다 computed를 사용해서 더 유지보수가 쉽게 만들어 줄 수도 있습니다.\nHomeView.vue 입니다.\n\u003cscript setup\u003e import { ref } from 'vue' import Profile from '@/components/ProfileComponent.vue' const title = ref(\"I love Go and K8S\") const introduce = ref(\"In the realm of astronomy once, \\n but now becoming a dream-chasing gopher.\") \u003c/script\u003e \u003ctemplate\u003e \u003cProfile :title=\"title\" :introduce=\"introduce\" /\u003e \u003c/template\u003e Profile이 추가가 되었습니다. 다른 작업을 다 하고 나서, 왠지 프로필 사진도 추가하면 좋겠네요.\n하지만 그 전에 게시글 카드를 만들어 봅시다.\n저희는 UI만을 만들 예정이기 때문에, 게시글 관리에 관한 방법은 깊게 생각하지 않아도 될 것 같습니다. Mock 데이터로 게시글에 대한 흉내만 내보도록 해봅시다. (물론 실용적으로 쓰기 시작하려면 언젠간 고려해야 하겠지만요.)\n우선 App.vue에 전역으로 사용할 만한 css 하나를 추가해줍니다. class no-scroll을 만들어 스크롤바 가 생겼을 때 이를 표시하지 않게 만듭니다. 스크롤바는 게시글 카드 영역에 카드 상자 크기를 넘을 만큼 많이 쌓였을 때를 대비한 것 입니다.\n\u003cstyle\u003e /* ( 크롬, 사파리, 오페라, 엣지 ) 동작 */ .no-scroll::-webkit-scrollbar { display: none; } .no-scroll { -ms-overflow-style: none; /* 인터넷 익스플로러 */ scrollbar-width: none; /* 파이어폭스 */ } \u003c/style\u003e 그리고 HomeView.vue를 다음과 같이 바꿔봅니다. 프로필 밑 div에서는 overflow-y-auto를 사용하고 있습니다. 이 게시글의 이유와 같다고 보면 될 것 같습니다.\n\u003cscript setup\u003e import { ref } from 'vue'; import Profile from '@/components/ProfileComponent.vue'; import Posts from '@/components/PostsComponent.vue'; const title = ref(\"I love Go and K8S\"); const introduce = ref(\"In the realm of astronomy once, \\n but now becoming a dream-chasing gopher.\"); \u003c/script\u003e \u003ctemplate\u003e \u003cdiv class=\"flex flex-column \" style=\"height: 100%;\"\u003e \u003cdiv class=\"\"\u003e \u003cProfile :title=\"title\" :introduce=\"introduce\" /\u003e \u003c/div\u003e \u003cdiv class=\"overflow-y-auto no-scroll flex flex-column justify-content-center mt-3\"\u003e \u003cPosts /\u003e \u003c/div\u003e \u003c/div\u003e \u003c/template\u003e 이제 정말 카드를 집어 넣기만 하면 됩니다. 카드의 형태 자체는 그리 어려울 것이 없습니다. 다만 이제 슬슬, pinia를 써야하는 것이 아닌가 라는 생각이 들기 시작 합니다.\n밝은 버전의 테마에서는 카드의 색깔을 흰색으로 해도 충분했습니다. 하지만 전 어두운 버젼에서는 회색빛에 가까운 처리가 되길 바라고 있습니다.\n최상단 컴포넌트에서는 쉽게 다크 모드 여부를 알 수 있었고, 또한 글자 위주의 설정이었기 때문에 색상 관리가 그다지 어렵지 않았지만, 점점 더 깊어지는 컴포넌트의 구조상 부모 컴포넌트가 가지고 있는 다크 모드 여부에 대한 정보를 관리하기가 힘들어지는 것이죠.\n그렇기 때문에 우선 pinia 에 다크 모드 여부에 대한 변수를 만들어봅시다.\n/src/stores/toggle.js 파일을 만듭니다.\nimport { ref } from 'vue' import { defineStore } from 'pinia' export const useToggleStore = defineStore('toggle', () =\u003e { const toggleDarkMode = ref(false) return { toggleDarkMode } }) 정말 간단한 코드입니다. useToggleStore 라는 곳에는 이제 toggleDarKMode 가 저장되어 있습니다. 이제 이것들을 사용하기만 하면 되는데요, 저희는 우선 App.vue를 살짝 고칠 것이고, 이후에 다시 본래 목적으로 돌아오겠습니다.\n사용하는 것에 대한 설명은 이 문서 이쪽에 설명되어 있습니다.\n\u003cscript setup\u003e ... import { storeToRefs } from 'pinia' import { useToggleStore } from '@/stores/toggle' const toggleStore = useToggleStore() const { toggleDarKMode } = storeToRefs(toggleStore) ... // const toggleDarKMode = ref(false) ... \u003c/script\u003e App.vue에서 코드 네 줄을 추가한 후 기존에 선언해 놓았던 변수를 코멘트 처리했습니다. 이제 어느 컴포넌트에서도 손쉽게 toggleDarKMode를 추적할 수 있습니다.\n이제 PostComponent.vue 파일을 아래와 같이 작성하면 메인 화면에 mock데이터로 구성된 post 카드들이 나열하여 보이게 됩니다.\n\u003cscript setup\u003e import { ref, computed } from 'vue' import { storeToRefs } from 'pinia' import { useToggleStore } from '@/stores/toggle' const toggleStore = useToggleStore() const { toggleDarKMode } = storeToRefs(toggleStore) const darkMode = computed(() =\u003e { return toggleDarKMode.value ? 'surface-800 text-0' : 'surface-card text-900' }) const posts = ref([ { \"title\": 'Test1', \"content\": 'Responsive alternatives are available for customizations based on screen size. Add the responsive breakpoint keyword followed by a semi-colon as a prefix such as md:text-overflow-clip to use a responsive class.', \"date\": 'July 17, 2023 · 12 min', }, ... ]) \u003c/script\u003e \u003ctemplate\u003e \u003cdiv v-for=\"post in posts\" :key=\"post.content\" class=\"border-round-lg mx-5 my-5 p-4 shadow-2 flex flex-column gap-2\" :class=\"darkMode\" style=\"height: 120px;\"\u003e \u003cdiv class=\"font-bold text-3xl\" style=\"height: 30%;\"\u003e {{ post.title }} \u003c/div\u003e \u003cdiv class=\"text-500 line-height-3 line w-full\" style=\"height: 50%;\"\u003e {{ post.content }} \u003c/div\u003e \u003cdiv class=\" text-500 text-xs flex align-items-center\" style=\"height: 20%;\"\u003e {{ post.date }} \u003c/div\u003e \u003c/div\u003e \u003c/template\u003e \u003cstyle scoped\u003e .line { text-overflow: ellipsis; overflow: hidden; word-break: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical } \u003c/style\u003e 그런데 뭔가 카드들이 존재하는 곳의 높이가 너무 제한적이라 답답한 기분이 들죠? 저는 다시 App.js 파일을 수정하여 카드가 많은 만큼 화면이 아래로 내려갈 수 있게 했습니다. 여러분도 개인의 취향에 맞는 방향으로 세부적인 css를 고쳐 보셨으면 좋겠습니다!\n여기서 이제 커스텀을 더 진행한다면, 게시물 pagination을 추가 해볼 수도 있고, 인상적인 양 옆의 빈 공간을 좀 더 효율적으로 사용하도록 구상해볼 수 있을 것 같습니다. 다만 제 생각에 그것들은 게시글을 어떻게 저장하고 관리할 것인가의 방식이 정해지고 건드려도 나쁘지 않을 듯 합니다. 그러니 잠시 추후로 미루어도 좋을 것 같습니다.\n이번 글은 여기서 마치고, 다음 글에서는 게시글의 디테일을 꾸며보겠습니다.\n",
+  "wordCount" : "2873",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://kubesy.com/posts/vue.js/vue2/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Geronimo!",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://kubesy.com/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://kubesy.com/" accesskey="h" title="Geronimo! (Alt + H)">Geronimo!</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://kubesy.com/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://kubesy.com/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://kubesy.com/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://kubesy.com/">Home</a>&nbsp;»&nbsp;<a href="http://kubesy.com/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Vue.js로 블로그 UI 만들기 (2)
+    </h1>
+    <div class="post-meta">14 min
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#navbar-%eb%a7%8c%eb%93%a4%ea%b8%b0" aria-label="Navbar 만들기">Navbar 만들기</a></li>
+                <li>
+                    <a href="#%eb%a9%94%ec%9d%b8-%ed%99%94%eb%a9%b4-%ea%be%b8%eb%af%b8%ea%b8%b0" aria-label="메인 화면 꾸미기">메인 화면 꾸미기</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>들어가기 앞서 :</p>
+<p>부끄럽지만, 이런저런 내용들 중 많이 부분을 경험적인 학습 + chatGPT가 알려주는 정보로 이루어냈습니다. 하지만 이런 내용들은 Vue 공식 홈페이지에 자세하고 깊은 수준으로 잘 문서화 되어있기 때문에 꾸준히 문서를 학습하는 것이 장기적으로 도움이 될 듯 합니다.</p>
+<p>또한 코드를 완벽하게 다루지 못하기 때문에 부분 부분 “얘는 왜 저렇게 코드를 짜는 거지?” 하실 수도 있습니다.</p>
+<h1 id="navbar-만들기">Navbar 만들기<a hidden class="anchor" aria-hidden="true" href="#navbar-만들기">#</a></h1>
+<p>src/views 에 파일을 다음과 같이 형성하고,  vue-Router 의 index.js 파일의 내용을 수정 해봅시다. 새로 형성한 <code>*.vue</code> 파일에는 <code>&lt;template&gt; filename &lt;/template&gt;</code> 정도를 넣어줍시다. 여기서 파일의 경로중 ‘@’는 레포지토리 최상단 vite.config.js에서 alias로 설정된 ./src 의 경로를 의미하는 기호입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ls src/views
+</span></span><span style="display:flex;"><span>AboutView.vue  ArchiveView.vue  HomeView.vue  SearchView.vue  TagView.vue
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">createRouter</span>, <span style="color:#a6e22e">createWebHistory</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue-router&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">HomeView</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@/views/HomeView.vue&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">SearchView</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@/views/SearchView.vue&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">ArchiveView</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@/views/ArchiveView.vue&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">TagView</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@/views/TagView.vue&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">router</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createRouter</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">history</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">createWebHistory</span>(<span style="color:#66d9ef">import</span>.<span style="color:#a6e22e">meta</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">BASE_URL</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">routes</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;home&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">HomeView</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/search&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;search&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">SearchView</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/archive&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;archive&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ArchiveView</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/tag&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;tag&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">TagView</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#a6e22e">router</span>
+</span></span></code></pre></div><p>그리고 NavBar.vue를 다음과 같이 수정해봅시다.</p>
+<pre tabindex="0"><code>&lt;template&gt;
+    &lt;div&gt;
+        &lt;div class=&#34;flex justify-content-between align-items-center&#34;&gt;
+            &lt;div class=&#34;flex align-items-center&#34;&gt;
+                &lt;div class=&#34;text-2xl ml-2 font-bold&#34;&gt;
+                    &lt;RouterLink to=&#34;/search&#34; class=&#34;router&#34;&gt;
+                        {{ props.title }}
+                    &lt;/RouterLink&gt;
+                &lt;/div&gt;
+                &lt;!-- svg : moon --&gt;
+                &lt;svg v-if=&#34;props.toggle&#34; class=&#34;ml-2 svg-moon cursor-pointer&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34;
+                    height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; @click=&#34;toggleChange&#34;&gt;
+                    &lt;path
+                        d=&#34;M10.719 2.082c-2.572 2.028-4.719 5.212-4.719 9.918 0 4.569 1.938 7.798 4.548 9.895-4.829-.705-8.548-4.874-8.548-9.895 0-5.08 3.808-9.288 8.719-9.918zm1.281-2.082c-6.617 0-12 5.383-12 12s5.383 12 12 12c1.894 0 3.87-.333 5.37-1.179-3.453-.613-9.37-3.367-9.37-10.821 0-7.555 6.422-10.317 9.37-10.821-1.74-.682-3.476-1.179-5.37-1.179zm0 10.999c1.437.438 2.562 1.564 2.999 3.001.44-1.437 1.565-2.562 3.001-3-1.436-.439-2.561-1.563-3.001-3-.437 1.436-1.562 2.561-2.999 2.999zm8.001.001c.958.293 1.707 1.042 2 2.001.291-.959 1.042-1.709 1.999-2.001-.957-.292-1.707-1.042-2-2-.293.958-1.042 1.708-1.999 2zm-1-9c-.437 1.437-1.563 2.562-2.998 3.001 1.438.44 2.561 1.564 3.001 3.002.437-1.438 1.563-2.563 2.996-3.002-1.433-.437-2.559-1.564-2.999-3.001z&#34; /&gt;
+                &lt;/svg&gt;
+                &lt;!-- svg : sun --&gt;
+                &lt;svg v-else class=&#34;ml-2 svg-sun cursor-pointer&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34;
+                    viewBox=&#34;0 0 24 24&#34; @click=&#34;toggleChange&#34;&gt;
+                    &lt;path
+                        d=&#34;M4.069 13h-4.069v-2h4.069c-.041.328-.069.661-.069 1s.028.672.069 1zm3.034-7.312l-2.881-2.881-1.414 1.414 2.881 2.881c.411-.529.885-1.003 1.414-1.414zm11.209 1.414l2.881-2.881-1.414-1.414-2.881 2.881c.528.411 1.002.886 1.414 1.414zm-6.312-3.102c.339 0 .672.028 1 .069v-4.069h-2v4.069c.328-.041.661-.069 1-.069zm0 16c-.339 0-.672-.028-1-.069v4.069h2v-4.069c-.328.041-.661.069-1 .069zm7.931-9c.041.328.069.661.069 1s-.028.672-.069 1h4.069v-2h-4.069zm-3.033 7.312l2.88 2.88 1.415-1.414-2.88-2.88c-.412.528-.886 1.002-1.415 1.414zm-11.21-1.415l-2.88 2.88 1.414 1.414 2.88-2.88c-.528-.411-1.003-.885-1.414-1.414zm2.312-4.897c0 2.206 1.794 4 4 4s4-1.794 4-4-1.794-4-4-4-4 1.794-4 4zm10 0c0 3.314-2.686 6-6 6s-6-2.686-6-6 2.686-6 6-6 6 2.686 6 6z&#34; /&gt;
+                &lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;div class=&#34;mr-2&#34;&gt;
+                &lt;RouterLink to=&#34;/search&#34; class=&#34;router mr-2&#34;&gt;Search&lt;/RouterLink&gt;
+                &lt;RouterLink to=&#34;/archive&#34; class=&#34;router mr-2&#34;&gt;Archive&lt;/RouterLink&gt;
+                &lt;RouterLink to=&#34;/tag&#34; class=&#34;router&#34;&gt;Tag&lt;/RouterLink&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { RouterLink } from &#39;vue-router&#39;
+
+const props = defineProps({
+    title: {
+        type: String,
+        required: true,
+    },
+    toggle: {
+        type: Boolean,
+        required: true,
+    },
+})
+
+const emit = defineEmits([&#39;toggle-change&#39;])
+
+const toggleChange = () =&gt; {
+    emit(&#39;toggle-change&#39;)
+    console.log(&#39;toggleChange&#39;)
+}
+
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+.router {
+    height: 3.5rem;
+    text-decoration: none;
+    color: inherit;
+}
+
+.router:hover {
+    color: #2663e8;
+}
+
+.svg-moon {
+    fill: #eae9e6;
+}
+
+.svg-moon:hover {
+    /* Apply your hover styles here */
+    fill: #eedc34;
+}
+
+.svg-sun:hover {
+    fill: rgb(225, 46, 46);
+}
+&lt;/style&gt;
+</code></pre><p>추가된 요소가 많이 생겼습니다. 하나 하나 뜯어서 보도록 합시다. 우선 <strong>script</strong> 부분입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">setup</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">RouterLink</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue-router&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">props</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">defineProps</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> String,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">required</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">toggle</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> Boolean,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">required</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">emit</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">defineEmits</span>([<span style="color:#e6db74">&#39;toggle-change&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">toggleChange</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">emit</span>(<span style="color:#e6db74">&#39;toggle-change&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;toggleChange&#39;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><p>저는 이 컴포넌트에, vue-router의 기능 중 하나인 RouterLink를 import 했습니다. RouterLink는 위의 Template 쪽에서 html의 a 태그를 대신 해줄 또 다른 컴포넌트 입니다.</p>
+<p>그리고 vue의 내장 기능 중 하나인 <strong>defineProps</strong>를 사용했습니다. 특정 버전부터 따로 Import 하지 않아도 사용할 수 있다고 합니다. defineProps는 부모 컴포넌트로부터 특정 변수나 인자들을 받을 때를 위해 사용하는 기능 입니다.</p>
+<p>여기서 부모 컴포넌트는, NavBar.vue를 사용할 App.vue가 될 것이고 자연스럽게 NavBar.vue는 자식 컴포넌트가 됩니다.</p>
+<p>정의된 title과 toggle이라는 요소의 값이 각각의 변수 타입에 맞게 부모로부터 흘러 들어옵니다. required로 부모가 자식 컴포넌트에게 필수적으로 전달해야 함을 명시했습니다. 하지만 defineProps 단일 방향으로 데이터가 흐릅니다. 만약 자식이 부모에게 무언가 값의 변화를 알리고 싶다면, <strong>defineEmits</strong>을 사용해야 합니다.</p>
+<p>const toggleChange 에 정의된 함수 아래, 함수가 실행되면, <code>emit('toggle-change')</code> 가 실행되는데, 부모 컴포넌트는 안에 정의된 <code>'toggle-change'</code> 를 통해 자식이 전달한 어떤 이벤트를 감지 합니다. 그 과정은 App.vue를 수정하는 부분에서 다시 살펴 보겠습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>&lt;<span style="color:#f92672">template</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;flex justify-content-between align-items-center&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;flex align-items-center&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-2xl ml-2 font-bold&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#f92672">RouterLink</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/search&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;router&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                        {{ <span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">title</span> }}
+</span></span><span style="display:flex;"><span>                    &lt;/<span style="color:#f92672">RouterLink</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">&lt;!--</span> <span style="color:#a6e22e">svg</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">moon</span> <span style="color:#f92672">--&gt;</span>
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">svg</span> <span style="color:#a6e22e">v</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#a6e22e">if</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;props.toggle&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ml-2 svg-moon cursor-pointer&#34;</span> <span style="color:#a6e22e">xmlns</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://www.w3.org/2000/svg&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;24&#34;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;24&#34;</span> <span style="color:#a6e22e">viewBox</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0 0 24 24&#34;</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;toggleChange&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#f92672">path</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">d</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;M10.719 2.082c-2.572 2.028-4.719 5.212-4.719 9.918 0 4.569 1.938 7.798 4.548 9.895-4.829-.705-8.548-4.874-8.548-9.895 0-5.08 3.808-9.288 8.719-9.918zm1.281-2.082c-6.617 0-12 5.383-12 12s5.383 12 12 12c1.894 0 3.87-.333 5.37-1.179-3.453-.613-9.37-3.367-9.37-10.821 0-7.555 6.422-10.317 9.37-10.821-1.74-.682-3.476-1.179-5.37-1.179zm0 10.999c1.437.438 2.562 1.564 2.999 3.001.44-1.437 1.565-2.562 3.001-3-1.436-.439-2.561-1.563-3.001-3-.437 1.436-1.562 2.561-2.999 2.999zm8.001.001c.958.293 1.707 1.042 2 2.001.291-.959 1.042-1.709 1.999-2.001-.957-.292-1.707-1.042-2-2-.293.958-1.042 1.708-1.999 2zm-1-9c-.437 1.437-1.563 2.562-2.998 3.001 1.438.44 2.561 1.564 3.001 3.002.437-1.438 1.563-2.563 2.996-3.002-1.433-.437-2.559-1.564-2.999-3.001z&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>                &lt;/<span style="color:#f92672">svg</span>&gt;
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">&lt;!--</span> <span style="color:#a6e22e">svg</span> <span style="color:#f92672">:</span> sun <span style="color:#f92672">--&gt;</span>
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">svg</span> <span style="color:#a6e22e">v</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#a6e22e">else</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ml-2 svg-sun cursor-pointer&#34;</span> <span style="color:#a6e22e">xmlns</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://www.w3.org/2000/svg&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;24&#34;</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;24&#34;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#a6e22e">viewBox</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0 0 24 24&#34;</span> <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">click</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;toggleChange&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                    &lt;<span style="color:#f92672">path</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#a6e22e">d</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;M4.069 13h-4.069v-2h4.069c-.041.328-.069.661-.069 1s.028.672.069 1zm3.034-7.312l-2.881-2.881-1.414 1.414 2.881 2.881c.411-.529.885-1.003 1.414-1.414zm11.209 1.414l2.881-2.881-1.414-1.414-2.881 2.881c.528.411 1.002.886 1.414 1.414zm-6.312-3.102c.339 0 .672.028 1 .069v-4.069h-2v4.069c.328-.041.661-.069 1-.069zm0 16c-.339 0-.672-.028-1-.069v4.069h2v-4.069c-.328.041-.661.069-1 .069zm7.931-9c.041.328.069.661.069 1s-.028.672-.069 1h4.069v-2h-4.069zm-3.033 7.312l2.88 2.88 1.415-1.414-2.88-2.88c-.412.528-.886 1.002-1.415 1.414zm-11.21-1.415l-2.88 2.88 1.414 1.414 2.88-2.88c-.528-.411-1.003-.885-1.414-1.414zm2.312-4.897c0 2.206 1.794 4 4 4s4-1.794 4-4-1.794-4-4-4-4 1.794-4 4zm10 0c0 3.314-2.686 6-6 6s-6-2.686-6-6 2.686-6 6-6 6 2.686 6 6z&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>                &lt;/<span style="color:#f92672">svg</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mr-2&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">RouterLink</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/search&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;router mr-2&#34;</span>&gt;<span style="color:#a6e22e">Search</span>&lt;/<span style="color:#f92672">RouterLink</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">RouterLink</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/archive&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;router mr-2&#34;</span>&gt;<span style="color:#a6e22e">Archive</span>&lt;/<span style="color:#f92672">RouterLink</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">RouterLink</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/tag&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;router&#34;</span>&gt;<span style="color:#a6e22e">Tag</span>&lt;/<span style="color:#f92672">RouterLink</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">template</span>&gt;
+</span></span></code></pre></div><p><strong>template</strong> 쪽은 무언가 간단해보이면서도 이것저것이 많이 붙어 있습니다. 저는 개인적으로 html의 div 태그를 거의 유일하다시피하게 사용합니다. 그래서 조금 가시성이 안 좋아보이긴 하는데, 좋은 작성 방법을 추천해주시면 감사 하겠습니다.</p>
+<p>아무튼, 각종 div에는 class들이 달려있습니다. 그 class들에는 <a href="https://primeflex.org/flexdirection">primeFlex</a>에 정의된 것도 있고, 제가 <strong>style</strong>에서 수동으로 만든 것도 붙어 있습니다. 이 영역들은 기본적인 CSS 문법에 관련된 것들이기 때문에 깊게 설명들이지는 않겠습니다. primeFlex 사이트에 들어가보면, 정의된 클래스와 해당하는 css 문법이 나열되어 있습니다. 예를들어 위의 코드 중 제가 사용한, <code>justify-content-between</code>는 css에서 <code>justify-content: space-between</code>와 매칭 됩니다.</p>
+<p>그 다음은 <code>{{ props.title }}</code> 입니다. vue.js에서는 html에 javscript의 변수를 표현하기 위해서는 <code>{{ }}</code> 를 사용 합니다.</p>
+<p>저는 총 네가지의 <strong>RouterLink</strong> 를 사용했습니다. 이곳에서의 to는 url의 경로를 나타냅니다. 그리고 <strong>svg</strong>쪽을 잘 살펴보시면 <code>@click</code> 이라는 built-ins <strong>directive</strong>가 있습니다. <a href="https://vuejs.org/api/built-in-directives.html#v-on">@click</a>은 <code>v-on:click</code>의 줄임 표현입니다.</p>
+<p>built-in <strong>directive</strong> 중 또 많이 사용하는 것을 적용해 봅시다. <code>v-for</code> 입니다. 우선 코드에 두가지 요소를 추가합니다. <strong>RouterLink</strong>가 같은 형식으로 반복되는 경향을 코드 상에서 최소화 시켜볼 겁니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>&lt;<span style="color:#f92672">template</span>&gt;
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">&lt;!--</span>
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mr-2&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">RouterLink</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/search&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;router mr-2&#34;</span>&gt;<span style="color:#a6e22e">Search</span>&lt;/<span style="color:#f92672">RouterLink</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">RouterLink</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/archive&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;router mr-2&#34;</span>&gt;<span style="color:#a6e22e">Archive</span>&lt;/<span style="color:#f92672">RouterLink</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">RouterLink</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/tag&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;router&#34;</span>&gt;<span style="color:#a6e22e">Tag</span>&lt;/<span style="color:#f92672">RouterLink</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">--&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>			&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;flex gap-4&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">RouterLink</span> <span style="color:#a6e22e">v</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#a6e22e">for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;path in paths&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span><span style="color:#a6e22e">key</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;path.name&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span><span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;path.path&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;router flex align-items-center &#34;</span>&gt;
+</span></span><span style="display:flex;"><span>              {{ <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">name</span> }}
+</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">RouterLink</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">template</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">setup</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">ref</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">paths</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ref</span>([
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Search&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/search&#39;</span>,
+</span></span><span style="display:flex;"><span>    }, {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Archive&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/archive&#39;</span>,
+</span></span><span style="display:flex;"><span>    }, {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Tag&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/tag&#39;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><p>코드를 살펴보시면, 주석처리 해놓은 원래의 <strong>RouterLink</strong> 파트가 내용만 바뀌고 반복되는 점을 찾아서 <strong>v-for</strong>의 기능을 사용해 코드를 좀 더 수정하기 편하게 만들었습니다. <strong>v-for</strong> 내부에는 <code>“path in paths”</code> 라는 부분이 있는데, 아래 script 단에서 정의한 변수 paths를 사용했음을 짐작할 수 있습니다.</p>
+<p>언젠가 제가 vue를 공부할까, react를 공부할까 했을 때, 이런 점이 vue의 간편한 요소라고 했던 <a href="https://codingapple.com/unit/why-use-vue-over-react/">글</a>이 기억나네요.</p>
+<p>여기서 <a href="https://v3-docs.vuejs-korea.org/api/reactivity-core.html#ref">ref</a> 가 등장합니다. relative 성을 다루기 위해 사용하는 API 중 하나로, 화면 상에서 동적으로 변화시킬 변수들을 ref로 선언하는 것 입니다. 이 변수에 값에 접근하기 위해서는 <code>.value</code> 를 뒤에 붙여서 사용해야 합니다. 다만, <strong>template</strong> 쪽 에서 사용할 때는 그럴 필요가 없습니다. 예를 들면 <code>{{ var.value }}</code>가 아닌 <code>{{ var }}</code>만 사용해도 된다는 의미입니다.</p>
+<p>여기서 기능을 하나 더 추가 해봅시다. 사용자가 <strong>RouterLink</strong>에 해당하는 부분을 클릭 했을 때 해당하는 url이 바뀐다는 것은 저번 게시글에서 확인해 보았습니다. 그럼 이제 제가 해보고 싶은 것은 아래 사진처럼 특정 url로 들어갔을 때 해당하는 부분에만 강조를 주고 싶습니다.</p>
+<p><img loading="lazy" src="/images/vuejs/vue2/Untitled%200.png" alt=""  />
+</p>
+<p>그렇다면 현재의 vue-router의 path를 프로그래밍적 currentPath 라는 이름으로 뽑아 낸 다음, 위에서 새로 만든 <strong>RouterLink</strong>에 조건을 활용해서 <code>path.name</code> 과 비교 후 클래스나 스타일을 추가 해야할 것 같습니다. vue-router 문서를 뒤적거리며 <a href="https://router.vuejs.org/guide/advanced/composition-api.html#accessing-the-router-and-current-route-inside-setup">그런 기능</a>이 있나 한 번 살펴 볼까요?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">setup</span>&gt;
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">RouterLink</span>, <span style="color:#a6e22e">useRoute</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue-router&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">route</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useRoute</span>()
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><p>useRoute를 사용하면 현재 경로의 정보를 얻어낼 수 있습니다! 이제 선택적으로 스타일을 구현해보도록 하겠습니다. <a href="https://v3-docs.vuejs-korea.org/guide/essentials/class-and-style.html">bind class</a>(혹은 style) 라는 것을 사용하면 됩니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>&lt;<span style="color:#f92672">Template</span>&gt;
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>	&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;flex gap-4&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">RouterLink</span> <span style="color:#a6e22e">v</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#a6e22e">for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;path in paths&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span><span style="color:#a6e22e">key</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;path.name&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span><span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;path.path&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;router flex align-items-center&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">div</span> <span style="color:#960050;background-color:#1e0010">:</span><span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;isActive(path.path)&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>              {{ <span style="color:#a6e22e">path</span>.<span style="color:#a6e22e">name</span> }}
+</span></span><span style="display:flex;"><span>          &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">RouterLink</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">Template</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">isActive</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">path</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> { <span style="color:#e6db74">&#39;border-bottom-1 font-bold&#39;</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">route</span>.<span style="color:#a6e22e">path</span>, }
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><p><code>IsActive</code> 의 함수를 사용하면, <code>{ 'border-bottom-1 font-bold': path === route.path, }</code> 를 리턴해 줍니다. 이 정도면 얼추 대강의 NavBar 가 준비 된 것 같습니다.</p>
+<p>그럼 이제 App.vue에서 위의 컴포넌트를 실행하고 더해 화면의 골격 까지도 다음 코드를 이용해 잡아봅시다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">setup</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">ref</span>, <span style="color:#a6e22e">onMounted</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">NavBar</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./components/NavBar.vue&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">navbarRef</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ref</span>(<span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">contentHeight</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ref</span>(<span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">onMounted</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Get the height of the navbar_div element
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">navbarRef</span>.<span style="color:#a6e22e">value</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">contentHeight</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`calc(100vh - </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">navbarRef</span>.<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">offsetHeight</span><span style="color:#e6db74">}</span><span style="color:#e6db74">px)`</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">toggleDarKMode</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ref</span>(<span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">template</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;main&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span><span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;[toggleDarKMode ? &#39;surface-900 text-300&#39; : &#39;bg-blue-50&#39;]&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width: 100%; height: 100vh; min-width: 360px;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;navbar_div&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;flex flex-column align-items-center&#34;</span> <span style="color:#a6e22e">ref</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;navbarRef&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">NavBar</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;navbar my-3&#34;</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Geronimo! ~&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span><span style="color:#a6e22e">toggle</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;toggleDarKMode&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">toggle</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#a6e22e">change</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;toggleDarKMode = !toggleDarKMode&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;content_div&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;flex flex-column align-items-center&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;border-1 content&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span><span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{ height: contentHeight }&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">RouterView</span> /&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">template</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">style</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">media</span> (<span style="color:#a6e22e">min</span><span style="color:#f92672">-</span><span style="color:#a6e22e">width</span><span style="color:#f92672">:</span><span style="color:#ae81ff">360</span><span style="color:#a6e22e">px</span>) <span style="color:#a6e22e">and</span> (<span style="color:#a6e22e">max</span><span style="color:#f92672">-</span><span style="color:#a6e22e">width</span><span style="color:#f92672">:</span><span style="color:#ae81ff">800</span><span style="color:#a6e22e">px</span>) {
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">content</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">100</span><span style="color:#f92672">%</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">navbar</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">100</span><span style="color:#f92672">%</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">media</span> (<span style="color:#a6e22e">min</span><span style="color:#f92672">-</span><span style="color:#a6e22e">width</span><span style="color:#f92672">:</span><span style="color:#ae81ff">800</span><span style="color:#a6e22e">px</span>) <span style="color:#a6e22e">and</span> (<span style="color:#a6e22e">max</span><span style="color:#f92672">-</span><span style="color:#a6e22e">width</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1072</span><span style="color:#a6e22e">px</span>) {
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">content</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">800</span><span style="color:#a6e22e">px</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">navbar</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">800</span><span style="color:#a6e22e">px</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">media</span> (<span style="color:#a6e22e">min</span><span style="color:#f92672">-</span><span style="color:#a6e22e">width</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1072</span><span style="color:#a6e22e">px</span>) {
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">content</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">800</span><span style="color:#a6e22e">px</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">navbar</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1072</span><span style="color:#a6e22e">px</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">style</span>&gt;
+</span></span></code></pre></div><p>다시 한 번 코드에 대한 분석을 해봅시다.</p>
+<p>가장 먼저 <strong>style</strong>을 체크하면, <code>@media</code>를 활용한 반응형 골격의 정도를 정의해 놓았습니다. 그 다음 template에서 정의한 클래스를 기반으로 화면의 구성비율을 결정했습니다. <strong>id</strong>로 <strong>div</strong> 태그를 구별해놓았는데 최상단을 main으로 두고, 밑으로 navbar_div, content_div 의 영역을 분리하여 적절한 width와 height를 여러 방식을 이용해 결정하고 있습니다. ( <strong>:stlye</strong>을 활용한 부분을 살펴보시면 좋을 것 같습니다 ) 제 개인적으로 css에서 제일 어려운 부분이 이런 위치 결정인 것 같습니다.</p>
+<p>클래스 중 ‘border-1’는 실선 테두리를 그려주는 primeFlex의 기능입니다. 위치 혹은 크기를 결정할 때 저는 테두리를 그려 놓고 체크해보는 편 입니다.</p>
+<p>다른 부분은 슬금슬금 넘어가도, 아래 내용은 확인해보고 가야겠습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">ref</span>, <span style="color:#a6e22e">onMounted</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">NavBar</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./components/NavBar.vue&#39;</span>;
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">onMounted</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Get the height of the navbar_div element
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">navbarRef</span>.<span style="color:#a6e22e">value</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">contentHeight</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`calc(100vh - </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">navbarRef</span>.<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">offsetHeight</span><span style="color:#e6db74">}</span><span style="color:#e6db74">px)`</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">toggleDarKMode</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ref</span>(<span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">template</span>&gt;
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">NavBar</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;navbar my-3&#34;</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Geronimo! ~&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span><span style="color:#a6e22e">toggle</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;toggleDarKMode&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">toggle</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#a6e22e">change</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;toggleDarKMode = !toggleDarKMode&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">template</span>&gt;
+</span></span></code></pre></div><p>첫 번째로는 onMounted 입니다. Vue.js api 중 reactivity 와 lifecycle 에 대한 기능들이 있다는 걸 확인 했었는데요, onMounted는 <a href="https://ko.vuejs.org/guide/essentials/lifecycle.html">lifecycle</a>에 해당하는 기능입니다. 링크 안 그림에서 볼 수 있다시피, 렌더링 과정 중 정말 많은 시점에서 어떤 일을 할지 결정 할 수가 있습니다. 저는 그리 깊은 활용까지는 해보지는 못했고, 주로 onMounted 많이 사용했던 것 같습니다. 여기서는 특정 div의 height 값을 결정 하는 데 사용하고 있습니다.</p>
+<p>그리고 NavBar 컴포넌트의 활용입니다. title과 :toggle, @toggle-change 라는 directive를 활용해서 dataProps에 전달할 값을 설정하고, 컴포넌트에게서 수신 받은 이벤트를 처리하기도 합니다.</p>
+<p>특히 <code>@toggle-change=&quot;toggleDarKMode = !toggleDarKMode&quot;</code>에서  @toggle-change를 이용해 NavBar 안에 있는 svg가 클릭 될 때 마다 <code>toggleDarKMode</code>의 boolean 값이 참과 거짓을 반복하게 만든 점을 확인하실 수 있을실 겁니다. 그리고 이 toggleDarKMode 값을 이용해 저는 다시 한 번 bind class 를 활용했습니다. <code>:class=&quot;[toggleDarKMode ? 'surface-900 text-300' : 'bg-blue-50']&quot;</code></p>
+<p>흠 근데 아직 뭔가 이상해요 … 뭘까요 … 아! footer가 필요하겠네요. footer를 새로운 컴포넌트로 만들어서 추가해도 되고, 아래 사진처럼 정말 간략하게 추가해도 될 것 같습니다. 위의 내용을 참고하여 한 번 컴포넌트로 만들어 보시는 게 어떨까요? ( 전 빠르게 진행하고자 따로 컴포넌트를 만들지 않고 넘어갔습니다)</p>
+<p><img loading="lazy" src="/images/vuejs/vue2/Untitled%201.png" alt=""  />
+</p>
+<p>이제 기본 골자는 완성 했습니다. 이제 메인 화면을 꾸며볼 차례입니다.</p>
+<h1 id="메인-화면-꾸미기">메인 화면 꾸미기<a hidden class="anchor" aria-hidden="true" href="#메인-화면-꾸미기">#</a></h1>
+<p><img loading="lazy" src="/images/vuejs/vue2/Untitled%202.png" alt=""  />
+</p>
+<p>메인 화면에는 크게 두 영역으로 나뉘어 있습니다.</p>
+<p>제 프로필이 간략하게 표시된 상단의 영역 하나와, 아래 게시글들이 카드 형식으로 나열된 부분 하나 입니다. 그리고 또 <a href="https://kubesy.com/posts/">휴고 블로그</a>에서 /posts 라는 경로로 가보면 제 프로필 영역은 사라지고 오로지 카드들이 나열된 형태만 남아있습니다.</p>
+<p>그럼 각각의 영역을 프로필, 포스트 별로 컴포넌트화 시켜서 <strong>HomeView.vue</strong> 안 에 구성해보는 게 어떨까 싶어집니다. 또한 vue-router에 /posts 라는 경로를 추가 해줘야겠습니다. 그 외의 작업들은 앞선 내용들과 얼추 비슷하다고 봅니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ls src/components/
+</span></span><span style="display:flex;"><span>NavBar.vue  PostsComponent.vue  ProfileComponent.vue  icons
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ ls src/views
+</span></span><span style="display:flex;"><span>AboutView.vue  ArchiveView.vue  HomeView.vue  PostsView.vue  SearchView.vue  TagView.vue
+</span></span></code></pre></div><p>ProfileComponent.vue 입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>&lt;<span style="color:#f92672">template</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;profile&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mb-3&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            {{ <span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">title</span> }}
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">v</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#a6e22e">html</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;introduce&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-500&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;line-height:170%;&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34; flex mt-4 gap-3&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://github.com/Larshavin&#34;</span> <span style="color:#a6e22e">target</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;_blank&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;color: inherit; &#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">i</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pi pi-github&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-size: 1.6rem&#34;</span>&gt;&lt;/<span style="color:#f92672">i</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://www.instagram.com/larshavin/&#34;</span> <span style="color:#a6e22e">target</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;_blank&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;color: inherit; &#34;</span>&gt;
+</span></span><span style="display:flex;"><span>                &lt;<span style="color:#f92672">i</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pi pi-instagram&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-size: 1.6rem&#34;</span>&gt;&lt;/<span style="color:#f92672">i</span>&gt;
+</span></span><span style="display:flex;"><span>            &lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">template</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">setup</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">computed</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">props</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">defineProps</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">title</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> String,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">required</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">introduce</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> String,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">required</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">introduce</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">computed</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">introduce</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/\n/g</span>, <span style="color:#e6db74">&#39;&lt;br /&gt;&#39;</span>)
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">style</span> <span style="color:#a6e22e">scoped</span>&gt;
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">profile</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">margin</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">8</span><span style="color:#a6e22e">rem</span> <span style="color:#ae81ff">2</span><span style="color:#a6e22e">rem</span> <span style="color:#ae81ff">1</span><span style="color:#a6e22e">rem</span> <span style="color:#ae81ff">2</span><span style="color:#a6e22e">rem</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">style</span>&gt;
+</span></span></code></pre></div><p>이 코드에서 설명드려야 할 부분이 있다면 primeIcon 과 v-html, computed 가 사용 되었다 정도겠습니다.</p>
+<p>프론트엔드를 만지다보면 Icon이 필요할 때가 분명 존재 합니다. 주로 많이 쓰이는 것이 <a href="https://fontawesome.com">Font Awesome</a> 겠지만, <a href="https://primevue.org/icons/">primeIcon</a> 이라는 것도 있습니다. 저번 게시글에서 소리 소문 없이 설치하긴 했습니다만, primeVue와 연동하여 쓰기에 괜찮습니다. 물론 그 양이 그렇게 많지는 않아서 저는 font awesome과 함께 사용하는 편 입니다.</p>
+<p>v-html은 {{ 변수 }} 로 보통 표현하는 것 대신, html 문법이 만족하게 표현해줍니다. 만약 string 변수에 “\n” 가 들어갔을 때 {{ 변수 }}는 이 \n를 표현하지 못합니다. 또한 아래 코드를 사용하여 “\n”가 <!-- raw HTML omitted --> 로 바뀐 상태라도 그 적용이 안되는 걸 확인 할 수 있는데, v-html을 사용하면 쉽게 해결 됩니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">introduce</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">computed</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">introduce</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">/\n/g</span>, <span style="color:#e6db74">&#39;&lt;br /&gt;&#39;</span>)
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><p>computed는 vue에서 보통 함수(메소드)로 많이 사용한 것들에 대한 대체로 사용이 가능합니다. 다만 간단한 연산일 때만 이용하는 것이 좋습니다. 특히 템플릿 안에서 자바스크립트 계산을 진행해야 할 때가 종종 오곤하는데, 그럴 때 마다 computed를 사용해서 더 유지보수가 쉽게 만들어 줄 수도 있습니다.</p>
+<p>HomeView.vue 입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">setup</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">ref</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Profile</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@/components/ProfileComponent.vue&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">title</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ref</span>(<span style="color:#e6db74">&#34;I love Go and K8S&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">introduce</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ref</span>(<span style="color:#e6db74">&#34;In the realm of astronomy once, \n but now becoming a dream-chasing gopher.&#34;</span>)
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">template</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">Profile</span> <span style="color:#960050;background-color:#1e0010">:</span><span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;title&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span><span style="color:#a6e22e">introduce</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;introduce&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">template</span>&gt;
+</span></span></code></pre></div><p>Profile이 추가가 되었습니다. 다른 작업을 다 하고 나서, 왠지 프로필 사진도 추가하면 좋겠네요.</p>
+<p><img loading="lazy" src="/images/vuejs/vue2/Untitled%203.png" alt=""  />
+</p>
+<p>하지만 그 전에 게시글 카드를 만들어 봅시다.</p>
+<p>저희는 UI만을 만들 예정이기 때문에, 게시글 관리에 관한 방법은 깊게 생각하지 않아도 될 것 같습니다. Mock 데이터로 게시글에 대한 흉내만 내보도록 해봅시다. (물론 실용적으로 쓰기 시작하려면 언젠간 고려해야 하겠지만요.)</p>
+<p>우선 App.vue에 전역으로 사용할 만한 css 하나를 추가해줍니다. class no-scroll을 만들어 스크롤바 가 생겼을 때 이를 표시하지 않게 만듭니다. 스크롤바는 게시글 카드 영역에 카드 상자 크기를 넘을 만큼 많이 쌓였을 때를 대비한 것 입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>&lt;<span style="color:#f92672">style</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* ( 크롬, 사파리, 오페라, 엣지 ) 동작 */</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">no</span><span style="color:#f92672">-</span><span style="color:#a6e22e">scroll</span><span style="color:#f92672">::-</span><span style="color:#a6e22e">webkit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">scrollbar</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">display</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">none</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">no</span><span style="color:#f92672">-</span><span style="color:#a6e22e">scroll</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">-</span><span style="color:#a6e22e">ms</span><span style="color:#f92672">-</span><span style="color:#a6e22e">overflow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">style</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">none</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* 인터넷 익스플로러 */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">scrollbar</span><span style="color:#f92672">-</span><span style="color:#a6e22e">width</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">none</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* 파이어폭스 */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">style</span>&gt;
+</span></span></code></pre></div><p>그리고 HomeView.vue를 다음과 같이 바꿔봅니다. 프로필 밑 div에서는 overflow-y-auto를 사용하고 있습니다. 이 <a href="https://velog.io/@planic324/CSS-displayflex-%EC%9D%98-overflow-y-auto-%EC%A0%81%EC%9A%A9%EA%B8%B0-feat.-footer-%EA%B3%A0%EC%A0%95%EC%9A%A9-%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0">게시글</a>의 이유와 같다고 보면 될 것 같습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">setup</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">ref</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Profile</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@/components/ProfileComponent.vue&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Posts</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@/components/PostsComponent.vue&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">title</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ref</span>(<span style="color:#e6db74">&#34;I love Go and K8S&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">introduce</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ref</span>(<span style="color:#e6db74">&#34;In the realm of astronomy once, \n but now becoming a dream-chasing gopher.&#34;</span>);
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">template</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;flex flex-column &#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;height: 100%;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">Profile</span> <span style="color:#960050;background-color:#1e0010">:</span><span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;title&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span><span style="color:#a6e22e">introduce</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;introduce&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;overflow-y-auto no-scroll flex flex-column justify-content-center mt-3&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">Posts</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">template</span>&gt;
+</span></span></code></pre></div><p>이제 정말 카드를 집어 넣기만 하면 됩니다. 카드의 형태 자체는 그리 어려울 것이 없습니다. 다만 이제 슬슬, pinia를 써야하는 것이 아닌가 라는 생각이 들기 시작 합니다.</p>
+<p>밝은 버전의 테마에서는 카드의 색깔을 흰색으로 해도 충분했습니다. 하지만 전 어두운 버젼에서는 회색빛에 가까운 처리가 되길 바라고 있습니다.</p>
+<p>최상단 컴포넌트에서는 쉽게 다크 모드 여부를 알 수 있었고, 또한 글자 위주의 설정이었기 때문에 색상 관리가 그다지 어렵지 않았지만, 점점 더 깊어지는 컴포넌트의 구조상 부모 컴포넌트가 가지고 있는 다크 모드 여부에 대한 정보를 관리하기가 힘들어지는 것이죠.</p>
+<p>그렇기 때문에 우선 pinia 에 다크 모드 여부에 대한 변수를 만들어봅시다.</p>
+<p>/src/stores/toggle.js 파일을 만듭니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">ref</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">defineStore</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;pinia&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">useToggleStore</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">defineStore</span>(<span style="color:#e6db74">&#39;toggle&#39;</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">toggleDarkMode</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ref</span>(<span style="color:#66d9ef">false</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">toggleDarkMode</span> }
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><p>정말 간단한 코드입니다. <code>useToggleStore</code> 라는 곳에는 이제 <code>toggleDarKMode</code> 가 저장되어 있습니다. 이제 이것들을 사용하기만 하면 되는데요, 저희는 우선 App.vue를 살짝 고칠 것이고, 이후에 다시 본래 목적으로 돌아오겠습니다.</p>
+<p>사용하는 것에 대한 설명은 이 문서 <a href="https://pinia.vuejs.org/core-concepts/#using-the-store">이쪽</a>에 설명되어 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">setup</span>&gt;
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">storeToRefs</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;pinia&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useToggleStore</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@/stores/toggle&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">toggleStore</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useToggleStore</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">toggleDarKMode</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">storeToRefs</span>(<span style="color:#a6e22e">toggleStore</span>)
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// const toggleDarKMode = ref(false)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>...
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><p>App.vue에서 코드 네 줄을 추가한 후 기존에 선언해 놓았던 변수를 코멘트 처리했습니다. 이제 어느 컴포넌트에서도 손쉽게 <code>toggleDarKMode</code>를 추적할 수 있습니다.</p>
+<p>이제 PostComponent.vue 파일을 아래와 같이 작성하면 메인 화면에 mock데이터로 구성된 post 카드들이 나열하여 보이게 됩니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-jsx" data-lang="jsx"><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">setup</span>&gt;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">ref</span>, <span style="color:#a6e22e">computed</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">storeToRefs</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;pinia&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">useToggleStore</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@/stores/toggle&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">toggleStore</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useToggleStore</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">toggleDarKMode</span> } <span style="color:#f92672">=</span> <span style="color:#a6e22e">storeToRefs</span>(<span style="color:#a6e22e">toggleStore</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">darkMode</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">computed</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">toggleDarKMode</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#39;surface-800 text-0&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;surface-card text-900&#39;</span>
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">posts</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ref</span>([
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;title&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Test1&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;content&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Responsive alternatives are available for customizations based on screen size. Add the responsive breakpoint keyword followed by a semi-colon as a prefix such as md:text-overflow-clip to use a responsive class.&#39;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;date&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;July 17, 2023 · 12 min&#39;</span>,
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>		...
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">template</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">v</span><span style="color:#960050;background-color:#1e0010">-</span><span style="color:#a6e22e">for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post in posts&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span><span style="color:#a6e22e">key</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post.content&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;border-round-lg mx-5 my-5 p-4 shadow-2 flex flex-column gap-2&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#960050;background-color:#1e0010">:</span><span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;darkMode&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;height: 120px;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-bold text-3xl&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;height: 30%;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            {{ <span style="color:#a6e22e">post</span>.<span style="color:#a6e22e">title</span> }}
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text-500 line-height-3 line w-full&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;height: 50%;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            {{ <span style="color:#a6e22e">post</span>.<span style="color:#a6e22e">content</span> }}
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34; text-500 text-xs flex align-items-center&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;height: 20%;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>            {{ <span style="color:#a6e22e">post</span>.<span style="color:#a6e22e">date</span> }}
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">template</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">style</span> <span style="color:#a6e22e">scoped</span>&gt;
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">line</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">text</span><span style="color:#f92672">-</span><span style="color:#a6e22e">overflow</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">ellipsis</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">overflow</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">hidden</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">word</span><span style="color:#f92672">-</span><span style="color:#66d9ef">break</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">break</span><span style="color:#f92672">-</span><span style="color:#a6e22e">word</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">display</span><span style="color:#f92672">:</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">webkit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">box</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span><span style="color:#a6e22e">webkit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">line</span><span style="color:#f92672">-</span><span style="color:#a6e22e">clamp</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span><span style="color:#a6e22e">webkit</span><span style="color:#f92672">-</span><span style="color:#a6e22e">box</span><span style="color:#f92672">-</span><span style="color:#a6e22e">orient</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">vertical</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">style</span>&gt;
+</span></span></code></pre></div><p>그런데 뭔가 카드들이 존재하는 곳의 높이가 너무 제한적이라 답답한 기분이 들죠? 저는 다시 App.js 파일을 수정하여 카드가 많은 만큼 화면이 아래로 내려갈 수 있게 했습니다. 여러분도 개인의 취향에 맞는 방향으로 세부적인 css를 고쳐 보셨으면 좋겠습니다!</p>
+<p><img loading="lazy" src="/images/vuejs/vue2/Untitled%204.png" alt=""  />
+</p>
+<p>여기서 이제 커스텀을 더 진행한다면, 게시물 pagination을 추가 해볼 수도 있고, 인상적인 양 옆의 빈 공간을 좀 더 효율적으로 사용하도록 구상해볼 수 있을 것 같습니다. 다만 제 생각에 그것들은 게시글을 어떻게 저장하고 관리할 것인가의 방식이 정해지고 건드려도 나쁘지 않을 듯 합니다. 그러니 잠시 추후로 미루어도 좋을 것 같습니다.</p>
+<p>이번 글은 여기서 마치고, 다음 글에서는 게시글의 디테일을 꾸며보겠습니다.</p>
+<h1 id="heading"><a hidden class="anchor" aria-hidden="true" href="#heading">#</a></h1>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://kubesy.com/tags/vue.js/">vue.js</a></li>
+      <li><a href="http://kubesy.com/tags/blog/">blog</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://kubesy.com/posts/vue.js/vue1/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Vue.js로 블로그 UI 만들기 (1)</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Vue.js로 블로그 UI 만들기 (2) on twitter"
+        href="https://twitter.com/intent/tweet/?text=Vue.js%eb%a1%9c%20%eb%b8%94%eb%a1%9c%ea%b7%b8%20UI%20%eb%a7%8c%eb%93%a4%ea%b8%b0%20%282%29&amp;url=http%3a%2f%2fkubesy.com%2fposts%2fvue.js%2fvue2%2f&amp;hashtags=vue.js%2cblog">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Vue.js로 블로그 UI 만들기 (2) on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2fkubesy.com%2fposts%2fvue.js%2fvue2%2f&amp;title=Vue.js%eb%a1%9c%20%eb%b8%94%eb%a1%9c%ea%b7%b8%20UI%20%eb%a7%8c%eb%93%a4%ea%b8%b0%20%282%29&amp;summary=Vue.js%eb%a1%9c%20%eb%b8%94%eb%a1%9c%ea%b7%b8%20UI%20%eb%a7%8c%eb%93%a4%ea%b8%b0%20%282%29&amp;source=http%3a%2f%2fkubesy.com%2fposts%2fvue.js%2fvue2%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Vue.js로 블로그 UI 만들기 (2) on reddit"
+        href="https://reddit.com/submit?url=http%3a%2f%2fkubesy.com%2fposts%2fvue.js%2fvue2%2f&title=Vue.js%eb%a1%9c%20%eb%b8%94%eb%a1%9c%ea%b7%b8%20UI%20%eb%a7%8c%eb%93%a4%ea%b8%b0%20%282%29">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Vue.js로 블로그 UI 만들기 (2) on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2fkubesy.com%2fposts%2fvue.js%2fvue2%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Vue.js로 블로그 UI 만들기 (2) on whatsapp"
+        href="https://api.whatsapp.com/send?text=Vue.js%eb%a1%9c%20%eb%b8%94%eb%a1%9c%ea%b7%b8%20UI%20%eb%a7%8c%eb%93%a4%ea%b8%b0%20%282%29%20-%20http%3a%2f%2fkubesy.com%2fposts%2fvue.js%2fvue2%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Vue.js로 블로그 UI 만들기 (2) on telegram"
+        href="https://telegram.me/share/url?text=Vue.js%eb%a1%9c%20%eb%b8%94%eb%a1%9c%ea%b7%b8%20UI%20%eb%a7%8c%eb%93%a4%ea%b8%b0%20%282%29&amp;url=http%3a%2f%2fkubesy.com%2fposts%2fvue.js%2fvue2%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+  </footer><script src="https://utteranc.es/client.js"
+        repo="Larshavin/Larshavin.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="http://kubesy.com/">Geronimo!</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
