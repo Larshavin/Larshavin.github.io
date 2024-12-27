@@ -61,7 +61,7 @@
 
             i {
               color: get-light-color('heading-color');
-              font-size: 12px;
+              font-size: 10px;
               margin-right: 5px;
             }
           }
@@ -129,8 +129,8 @@
   }
 
   @include media('<=ultra-large') {
-    flex: 15%;
-    max-width: 15%;
+    flex: 20%;
+    max-width: 20%;
 
     .sidebar-holder {
       max-width: 100%;

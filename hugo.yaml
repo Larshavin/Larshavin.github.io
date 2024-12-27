@@ -1,4 +1,4 @@
-#baseURL: https://hugo-toha.github.io
+baseURL: https://kubesy.com
 
 languageCode: ko-KR
 title: "양성연의 블로그"
@@ -73,3 +73,11 @@ params:
   # Configure footer
   footer:
     enable: true
+
+comment:
+  enable: true
+  services:
+    utteranc:
+      repo: Larshavin/Larshavin.github.io
+      issueTerm: title
+      theme: github-light
