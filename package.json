@@ -34,7 +34,6 @@
       "postcss-cli": "project"
     }
   },
-  "dependencies": {},
   "description": "A [Hugo](https://gohugo.io/) theme for a personal portfolio with minimalist design and responsiveness.",
   "devDependencies": {
     "@fontsource/mulish": "4.5.13",
@@ -58,7 +57,7 @@
     "ityped": "^1.0.3",
     "katex": "^0.16.11",
     "mark.js": "^8.11.1",
-    "mermaid": "^9.2.1",
+    "mermaid": "^11.6.0",
     "plyr": "^3.7.2",
     "popper.js": "^1.16.1",
     "postcss": "^8.4.41",
