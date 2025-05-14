@@ -1,0 +1,363 @@
+<!doctype html><html lang=en><head><title>Hello, k8s Dev World!</title>
+<meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="ie=edge"><link rel=stylesheet href=/application.a645a51ce96fb50237bbc1963357f13368de2c1e10aa221b68ef773965e2a474.css integrity="sha256-pkWlHOlvtQI3u8GWM1fxM2jeLB4QqiIbaO93OWXipHQ="><meta property="og:title" content="양성연의 블로그"><meta property="og:type" content="website"><meta property="og:description" content><meta property="og:image" content="/images/default-avatar.jpeg"><meta property="og:url" content="https://kubesy.com/"><meta name=description content="쿠버네티스를 개발자 관점에서 바라보는 글입니다."><script integrity="sha256-DO4ugzEwhTW1Id1UIWn0gUJWaebCYOypeTit6LW4QB4=">let theme=localStorage.getItem("theme-scheme")||localStorage.getItem("darkmode:color-scheme")||"light";theme==="system"&&(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?theme="dark":theme="light"),document.documentElement.setAttribute("data-theme",theme)</script></head><body class="type-posts kind-page" data-bs-spy=scroll data-bs-target=#TableOfContents data-bs-offset=80><div class="container-fluid bg-secondary wrapper"><nav class="navbar navbar-expand-xl top-navbar shadow" id=top-navbar><div class=container><button class="navbar-toggler navbar-light" id=sidebar-toggler type=button>
+<i data-feather=sidebar></i>
+</button>
+<a class=navbar-brand href=/>양성연의 블로그</a>
+<button class="navbar-toggler navbar-light" id=navbar-toggler type=button data-bs-toggle=collapse data-bs-target=#top-nav-items aria-label=menu>
+<i data-feather=menu></i></button><div class="collapse navbar-collapse dynamic-navbar" id=top-nav-items><ul class="nav navbar-nav ms-auto"><li class=nav-item><a class=nav-link href=/#home>Home</a></li><li class=nav-item><a class=nav-link href=/#about>About</a></li><li class=nav-item><a class=nav-link href=/#skills>Skills</a></li><li class=nav-item><a class=nav-link href=/#education>Education</a></li><li class=nav-item><a class=nav-link href=/#experiences>Experiences</a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href=# id=navbarDropdown role=button data-bs-toggle=dropdown aria-haspopup=true aria-expanded=false>More</a><div class=dropdown-menu aria-labelledby=navbarDropdown><a class=dropdown-item href=/#recent-posts>Recent Posts</a></div></li><div id=top-navbar-divider></div><li class=nav-item><a class=nav-link id=blog-link href=/posts>Posts</a></li></ul></div></div></nav><section class=sidebar-section id=sidebar-section><div class=sidebar-holder><div class=sidebar id=sidebar><form class=mx-auto method=get action=/search><input type=text name=keyword placeholder=Search data-search id=search-box></form><div class=sidebar-tree><ul class=tree id=tree><li id=list-heading><a href=/posts/ data-filter=all>Posts</a></li><div class=subtree><li><a class=list-link href=/posts/100.-diary/ title="100. Diary">100. Diary</a></li><li><a class=list-link href=/posts/200.-novel/ title="200. Novel">200. Novel</a></li><li><i data-feather=minus-circle></i><a class="active list-link" href=/posts/300.-study/> 300. Study</a><ul class=active><li><i data-feather=minus-circle></i><a class="active list-link" href=/posts/300.-study/301.-kubernetes-deep-dive/> 301. Kubernetes deep-dive!</a><ul class=active><li><a class="active list-link" href=/posts/300.-study/301.-kubernetes-deep-dive/hello-k8s-dev-world/ title="Hello, k8s Dev World!">Hello, k8s Dev World!</a></li></ul></li><li><a class=list-link href=/posts/300.-study/302.-openstack-deep-dive/ title="302. OpenStack deep-dive!">302. OpenStack deep-dive!</a></li><li><i data-feather=plus-circle></i><a class=list-link href=/posts/300.-study/303.-java-spring-boot-/> 303. Java Spring Boot</a><ul><li><a class=list-link href=/posts/300.-study/303.-java-spring-boot-/1.-%EA%B0%9C%EB%85%90-%EB%B0%8F-%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95-%EA%B7%B8%EB%A6%AC%EA%B3%A0-%EA%B0%84%EB%8B%A8%ED%95%9C-%EA%B5%AC%EB%8F%99/ title="1. 개념 및 환경 구축 그리고 간단한 구동">1. 개념 및 환경 구축 그리고 간단한 구동</a></li></ul></li></ul></li><li><a class=list-link href=/posts/400.-project/ title="400. Project">400. Project</a></li><li><i data-feather=plus-circle></i><a class=list-link href=/posts/500.-series/> 500. Series</a><ul><li><a class=list-link href=/posts/500.-series/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-%EA%B8%B0%EB%B3%B8/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4%EA%B0%80-%EB%AD%90%EC%A7%80/ title="쿠버네티스가 뭐지 1">쿠버네티스가 뭐지 1</a></li></ul></li></div></ul></div></div></div></section><section class=content-section id=content-section><div class=content><div class="container p-0 read-area"><div class="hero-area col-sm-12" id=hero-area style=background-image:url(/images/hero/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4%EA%B0%80%20%EB%AC%B4%EC%97%87%EC%9D%BC%EA%B9%8C.png)></div><div class=page-content><div class="author-profile ms-auto align-self-lg-center"><img class=rounded-circle src=/images/default-avatar_hu_403664f4887f3130.jpeg alt="Author Image"><h5 class=author-name>Seong-Yeon Yang</h5><p class=text-muted>Thursday, January 2, 2025</p></div><div class=title><h1>Hello, k8s Dev World!</h1></div><div class=post-content id=post-content><p><a href=https://github.com/kubernetes/kubernetes target=_blank rel=noopener>https://github.com/kubernetes/kubernetes</a></p><h3 id=쿠버네티스-딥-다이브를-시도하는-이유>쿠버네티스 딥 다이브를 시도하는 이유</h3><p>시중에 쿠버네티스(이하 K8s)를 엔지니어 관점에서 활용하는 예시는 무궁무진하다. 배포, 모니터링, 유지 관리 등등 .
+특히 K8s 클러스터를 배포하는 것은 kubeadm, kubespray, k3s, k0s, kind, minikube 등등 엄청나게 방법이 다양하다.</p><p>하지만 K8s를 개발의 관점에서 접근하는 경우는 드물다. 당장 <code>k8s 개발 환경 구축</code> 키워드로 검색해보아도, 대부분 엔지니어 관점에서의 게시글이다.</p><p>잘 만들어졌거나, 충분히 완성도가 높을 것이라 기대되는 K8s를 굳이 빌드해보는 이유는 무엇일까? 이에 대한 나의 선제적 답은 엔지니어와 개발자 두 가지 관점으로 있다.</p><p>엔지니어의 관점에서, 소프트웨어 내부 구조와 동작 원리를 얼마나 깊이 이해하고 있느냐에 따라 그 도구를 사용하는 효율성은 크게 달라진다. 특히, 복잡한 시스템일수록 내부 로직을 깊이 이해하는 것은 단순한 활용 이상의 가치를 제공한다.</p><p>이러한 이해는 단순히 현재의 요구 사항을 충족시키는 데서 그치지 않고, 예상치 못한 장애 상황이나 극한의 환경에서도 시스템의 성능과 안정성을 유지할 수 있는 확장성과 대응 능력을 제공한다. 예를 들어, 대규모 트래픽 폭증, 비정상적인 노드 장애, 또는 네트워크 단절과 같은 상황은 일반적인 환경에서는 쉽게 재현할 수 없지만, 이러한 시나리오에 대비한 설계와 배포 전략을 세우는 데에는 내부 로직에 대한 깊은 이해가 필수적이다.</p><p>또한, K8s를 코드 수준으로 분석하면서 얻게 되는 경험은 단순히 작동 방식을 넘어, 시스템의 다양한 구성 요소가 어떻게 상호작용하는지, 이를 최적화하거나 커스터마이징하는 방법은 무엇인지에 대한 통찰력을 제공한다. 이는 특정 프로젝트의 요구 사항에 맞는 맞춤형 솔루션을 설계하거나, 시스템 병목을 제거하고 성능을 극대화하는 데 직접적인 도움을 준다.</p><p>개발자 관점에서는 Kubernetes가 단순히 컨테이너 오케스트레이션 도구로서의 가치를 넘어 오픈소스 생태계와 Go 언어 기반 프로젝트의 대표적인 성공 사례로 꼽힌다는 점이다. 이는 단순히 소프트웨어를 빌드하고 사용하는 것을 넘어, 오픈소스 협업의 구조, 코드 품질 관리, 대규모 커뮤니티 기여 방식 등을 깊이 이해하는 데 훌륭한 케이스 스터디가 될 수 있다.</p><p>특히, Kubernetes는 복잡하고 정교하게 설계된 코드베이스를 가지고 있어, Go 언어의 고급 활용 사례를 학습하고, 효율적이고 확장 가능한 소프트웨어 설계를 탐구하기에 적합하다. 이를 통해 단순히 Kubernetes 자체의 동작 원리를 배우는 것뿐만 아니라, 대규모 오픈소스 프로젝트의 개발 및 운영 방식을 체득할 수 있다.</p><p>쿠버네티스 생태계를 얼마나 깊은 수준으로 탐험할 수 있을까나 걱정이지만, 조심스러운 여정을 시작해보려 한다.</p><h3 id=개발-환경-구축>개발 환경 구축</h3><p>구체적인 방법은 다음 주소에서 확인할 수 있다.
+<a href=https://github.com/kubernetes/community/blob/master/contributors/devel/README.md target=_blank rel=noopener>https://github.com/kubernetes/community/blob/master/contributors/devel/README.md</a></p><ul><li><a href=https://github.com/kubernetes/kubernetes/blob/8b1fe81dfa5ca3cc0b2c1088a1a8df2db0880b10/build/README.md target=_blank rel=noopener>Building Kubernetes with Docker</a></li><li><a href=https://github.com/kubernetes/community/blob/master/contributors/devel/running-locally.md target=_blank rel=noopener>hack/local-up-cluster.sh</a></li><li>예시 : <a href=https://medium.com/@ElieXU/k8s-cluster-setup-from-source-code-9e38354a24fd target=_blank rel=noopener>https://medium.com/@ElieXU/k8s-cluster-setup-from-source-code-9e38354a24fd</a></li></ul><h4 id=환경-셋업>환경 셋업</h4><p>아래 환경에서 프로젝트를 생성하여 진행하였다.
+cpu : 16 코어
+mem : 60
+os : rocky 9.4
+go 1.23.4</p><h4 id=빌드>빌드</h4><p>깃허브 레포지토리 readme를 확인하면 아래와 같은 두 가지 방법이 존재한다.</p><h5 id=golang-기반-환경>golang 기반 환경</h5><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>git clone https://github.com/kubernetes/kubernetes
+</span></span><span style=display:flex><span>cd kubernetes
+</span></span><span style=display:flex><span>make
+</span></span></code></pre></div><p>실제로 빌드 시에 시간 많이 소요되진 않는다. 거의 금방 완료된다.
+golang 기반으로 빌드 하였을 때 결과물은 다음과 같다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ pwd
+</span></span><span style=display:flex><span>/home/syyang/projects/kubernetes/_output/bin
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>$ ls
+</span></span><span style=display:flex><span>apiextensions-apiserver  e2e.test  go-runner  kube-aggregator  kube-controller-manager  kubectl-convert  kube-log-runner  kube-proxy      mounter
+</span></span><span style=display:flex><span>e2e_node.test            ginkgo    kubeadm    kube-apiserver   kubectl                  kubelet          kubemark         kube-scheduler
+</span></span></code></pre></div><h5 id=docker-환경>docker 환경</h5><p><a href=https://github.com/kubernetes/community/blob/master/contributors/devel/running-locally.md target=_blank rel=noopener>hack/local-up-cluster.sh</a> 문서를 따라하기에는 다음 방법을 사용한다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>git clone https://github.com/kubernetes/kubernetes
+</span></span><span style=display:flex><span>cd kubernetes
+</span></span><span style=display:flex><span>make quick-release
+</span></span></code></pre></div><p>해당 방식은 10~15분 정도 시간이 소요 된다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ make quick-release
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:01:32<span style=color:#f92672>]</span> Verifying Prerequisites....
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:01:32<span style=color:#f92672>]</span> Building Docker image kube-build:build-9bf87f211d-5-v1.33.0-go1.23.4-bullseye.0
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:05:22<span style=color:#f92672>]</span> Creating data container kube-build-data-9bf87f211d-5-v1.33.0-go1.23.4-bullseye.0
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:05:22<span style=color:#f92672>]</span> Syncing sources to container
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:05:28<span style=color:#f92672>]</span> Running build command...
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:05:31<span style=color:#f92672>]</span> Building go targets <span style=color:#66d9ef>for</span> linux/amd64
+</span></span><span style=display:flex><span>    k8s.io/apiextensions-apiserver <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/component-base/logs/kube-log-runner <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kube-aggregator <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cluster/gce/gci/mounter <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cmd/kube-apiserver <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cmd/kube-controller-manager <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cmd/kube-proxy <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cmd/kube-scheduler <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cmd/kubeadm <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cmd/kubelet <span style=color:#f92672>(</span>non-static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:06:39<span style=color:#f92672>]</span> Building go targets <span style=color:#66d9ef>for</span> linux/amd64
+</span></span><span style=display:flex><span>    k8s.io/component-base/logs/kube-log-runner <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cmd/kube-proxy <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cmd/kubeadm <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cmd/kubelet <span style=color:#f92672>(</span>non-static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:06:45<span style=color:#f92672>]</span> Building go targets <span style=color:#66d9ef>for</span> linux/amd64
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cmd/kubectl <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cmd/kubectl-convert <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:06:51<span style=color:#f92672>]</span> Building go targets <span style=color:#66d9ef>for</span> linux/amd64
+</span></span><span style=display:flex><span>    github.com/onsi/ginkgo/v2/ginkgo <span style=color:#f92672>(</span>non-static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/test/conformance/image/go-runner <span style=color:#f92672>(</span>non-static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/test/e2e/e2e.test <span style=color:#f92672>(</span>test<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:13<span style=color:#f92672>]</span> Building go targets <span style=color:#66d9ef>for</span> linux/amd64
+</span></span><span style=display:flex><span>    github.com/onsi/ginkgo/v2/ginkgo <span style=color:#f92672>(</span>non-static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cmd/kubemark <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/test/e2e_node/e2e_node.test <span style=color:#f92672>(</span>test<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:34<span style=color:#f92672>]</span> Syncing out of container
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:37<span style=color:#f92672>]</span> Building tarball: src
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:37<span style=color:#f92672>]</span> Building tarball: manifests
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:37<span style=color:#f92672>]</span> Starting tarball: client linux-amd64
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:37<span style=color:#f92672>]</span> Waiting on tarballs
+</span></span><span style=display:flex><span>gtar: Removing leading <span style=color:#e6db74>`</span>/<span style=color:#e6db74>&#39; from member names
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>gtar: Removing leading `/&#39;</span> from hard link targets
+</span></span><span style=display:flex><span>gtar: Removing leading <span style=color:#e6db74>`</span>/<span style=color:#e6db74>&#39; from member names
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>gtar: Removing leading `/&#39;</span> from member names
+</span></span><span style=display:flex><span>gtar: Removing leading <span style=color:#e6db74>`</span>/<span style=color:#e6db74>&#39; from hard link targets
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>gtar: Removing leading `/&#39;</span> from member names
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:42<span style=color:#f92672>]</span> Building tarball: node linux-amd64
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:42<span style=color:#f92672>]</span> Building images: linux-amd64
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:42<span style=color:#f92672>]</span> Starting docker build <span style=color:#66d9ef>for</span> image: kube-apiserver-amd64
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:42<span style=color:#f92672>]</span> Starting docker build <span style=color:#66d9ef>for</span> image: kube-controller-manager-amd64
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:42<span style=color:#f92672>]</span> Starting docker build <span style=color:#66d9ef>for</span> image: kube-scheduler-amd64
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:42<span style=color:#f92672>]</span> Starting docker build <span style=color:#66d9ef>for</span> image: kube-proxy-amd64
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:42<span style=color:#f92672>]</span> Starting docker build <span style=color:#66d9ef>for</span> image: kubectl-amd64
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:46<span style=color:#f92672>]</span> Deleting docker image registry.k8s.io/kube-proxy-amd64:v1.33.0-alpha.0.536_8b1fe81dfa5ca3
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:47<span style=color:#f92672>]</span> Deleting docker image registry.k8s.io/kubectl-amd64:v1.33.0-alpha.0.536_8b1fe81dfa5ca3
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:47<span style=color:#f92672>]</span> Deleting docker image registry.k8s.io/kube-scheduler-amd64:v1.33.0-alpha.0.536_8b1fe81dfa5ca3
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:47<span style=color:#f92672>]</span> Deleting docker image registry.k8s.io/kube-controller-manager-amd64:v1.33.0-alpha.0.536_8b1fe81dfa5ca3
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:49<span style=color:#f92672>]</span> Deleting docker image registry.k8s.io/kube-apiserver-amd64:v1.33.0-alpha.0.536_8b1fe81dfa5ca3
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:49<span style=color:#f92672>]</span> Docker builds <span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:07:49<span style=color:#f92672>]</span> Building tarball: server linux-amd64
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:08:21<span style=color:#f92672>]</span> Building tarball: final
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:08:21<span style=color:#f92672>]</span> Waiting on test tarballs
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:08:21<span style=color:#f92672>]</span> Starting tarball: test linux-amd64
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:08:30<span style=color:#f92672>]</span> Building tarball: test portable
+</span></span></code></pre></div><h4 id=hacklocal-up-clustersh>hack/local-up-cluster.sh</h4><p>로컬환경에 클러스터를 배포하는 스크립트이다.
+etcd 가 설치되어 있어야 한다. 아래는 etcd가 없어서 새로 설치 후 다시 진행했다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ export. CONTAINER_RUNTIME_ENDPOINT<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;unix:///run/containerd/containerd.sock&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>$ sudo -E PATH<span style=color:#f92672>=</span>$PATH hack/local-up-cluster.sh
+</span></span><span style=display:flex><span>make: Entering directory <span style=color:#e6db74>&#39;/home/syyang/projects/kubernetes&#39;</span>
+</span></span><span style=display:flex><span>+++ <span style=color:#f92672>[</span><span style=color:#ae81ff>0120</span> 14:13:07<span style=color:#f92672>]</span> Building go targets <span style=color:#66d9ef>for</span> linux/amd64
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cmd/cloud-controller-manager <span style=color:#f92672>(</span>non-static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cmd/kube-apiserver <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cmd/kube-controller-manager <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cmd/kubectl <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cmd/kubelet <span style=color:#f92672>(</span>non-static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cmd/kube-proxy <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>    k8s.io/kubernetes/cmd/kube-scheduler <span style=color:#f92672>(</span>static<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>make: Leaving directory <span style=color:#e6db74>&#39;/home/syyang/projects/kubernetes&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>sudo<span style=color:#f92672>]</span> password <span style=color:#66d9ef>for</span> syyang: 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>etcd must be in your PATH
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>You can use <span style=color:#e6db74>&#39;hack/install-etcd.sh&#39;</span> to install a copy in third_party/.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>$ ./hack/install-etcd.sh
+</span></span><span style=display:flex><span>Downloading https://github.com/etcd-io/etcd/releases/download/v3.5.17/etcd-v3.5.17-linux-amd64.tar.gz succeed
+</span></span><span style=display:flex><span>  PATH<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$PATH<span style=color:#e6db74>:/home/syyang/projects/kubernetes/third_party/etcd&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>$ PATH<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$PATH<span style=color:#e6db74>:/home/syyang/projects/kubernetes/third_party/etcd&#34;</span>
+</span></span></code></pre></div><p><code>/etc/containerd/config.toml</code> 파일에서 <code>SystemdCgroup = true</code> 라인을 지워야 하고 ( 해당 환경에 과거 k8s 설치이력이 있었다면, 클러스터 성분 및 kubelet 등을 깔끔하게 제거 하는 것을 추천한다 ) sudo 권한을 사용하여 <code>sudo -E PATH=$PATH hack/local-up-cluster.sh</code> 로 실행하는 게 좋다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>...
+</span></span><span style=display:flex><span>pod/coredns-76b7578cff-2qlv5 condition met
+</span></span><span style=display:flex><span>deployment.apps/coredns condition met
+</span></span><span style=display:flex><span><span style=color:#ae81ff>6</span>
+</span></span><span style=display:flex><span>Create default storage class <span style=color:#66d9ef>for</span> 
+</span></span><span style=display:flex><span>storageclass.storage.k8s.io/standard created
+</span></span><span style=display:flex><span>Local Kubernetes cluster is running. Press Ctrl-C to shut it down.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Configurations:
+</span></span><span style=display:flex><span>  /tmp/local-up-cluster.sh.7bEbu8/kube-audit-policy-file
+</span></span><span style=display:flex><span>  /tmp/local-up-cluster.sh.7bEbu8/kube_egress_selector_configuration.yaml
+</span></span><span style=display:flex><span>  /tmp/local-up-cluster.sh.7bEbu8/kubelet.yaml
+</span></span><span style=display:flex><span>  /tmp/local-up-cluster.sh.7bEbu8/kube-proxy.yaml
+</span></span><span style=display:flex><span>  /tmp/local-up-cluster.sh.7bEbu8/kube-scheduler.yaml
+</span></span><span style=display:flex><span>  /tmp/local-up-cluster.sh.7bEbu8/kube-serviceaccount.key
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Logs:
+</span></span><span style=display:flex><span>  /tmp/etcd.log
+</span></span><span style=display:flex><span>  /tmp/kube-apiserver.log
+</span></span><span style=display:flex><span>  /tmp/kube-controller-manager.log
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  /tmp/kube-proxy.log
+</span></span><span style=display:flex><span>  /tmp/kube-scheduler.log
+</span></span><span style=display:flex><span>  /tmp/kubelet.log
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>To start using your cluster, you can open up another terminal/tab and run:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  export KUBECONFIG<span style=color:#f92672>=</span>/var/run/kubernetes/admin.kubeconfig
+</span></span><span style=display:flex><span>  cluster/kubectl.sh
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Alternatively, you can write to the default kubeconfig:
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  export KUBERNETES_PROVIDER<span style=color:#f92672>=</span>local
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  cluster/kubectl.sh config set-cluster local --server<span style=color:#f92672>=</span>https://localhost:6443 --certificate-authority<span style=color:#f92672>=</span>/var/run/kubernetes/server-ca.crt
+</span></span><span style=display:flex><span>  cluster/kubectl.sh config set-credentials myself --client-key<span style=color:#f92672>=</span>/var/run/kubernetes/client-admin.key --client-certificate<span style=color:#f92672>=</span>/var/run/kubernetes/client-admin.crt
+</span></span><span style=display:flex><span>  cluster/kubectl.sh config set-context local --cluster<span style=color:#f92672>=</span>local --user<span style=color:#f92672>=</span>myself
+</span></span><span style=display:flex><span>  cluster/kubectl.sh config use-context local
+</span></span><span style=display:flex><span>  cluster/kubectl.sh
+</span></span></code></pre></div><p>코드 수정 후 매번 이런 식으로 클러스터를 배포해 볼 수 있다. 다만 이 과정 자체가 금방 수행된다는 느낌은 아니고 일부 수정 후에 항상 전체를 재배포해야 한다는 불만 요소가 있다. kind 등을 통해 컨테이너 수준으로 배포시에 파일 일부 변화만 감지하여 재배포하는 프로세스 등을 시도해봄직 하다.</p><p>우선은 간단한 방법론을 알아보았는데, 더 편리한 배포 방식은 추후에 더 심도있게 응용해야할 때가 있을 더 고민을 해볼 필요가 있을 듯하다.</p><h4 id=kind>kind</h4><p>K8s in Docker 라는 이름의 뜻 <a href=https://kind.sigs.k8s.io target=_blank rel=noopener>https://kind.sigs.k8s.io</a>
+<img src=/posts/images/kubernetes-deep-dive1/kubernetes-deep-dive.png class=center></p><p><code>kind supports building Kubernetes release builds from source</code> 라는 문장을 문서 어딘가에서 확인하였는데, 실제로 변경된 코드 사항을 빠르게 클러스터로 곧장 배포할 수 있다면 쿠버네티스 개발에 큰 도움이 되지 않을까 싶다.</p><p>다만, 아직 정확한 방법을 찾지는 못 하였는데, 예상컨데 소스 빌드 후 kind 노드 이미지를 새로 빌드하여 kind 클러스터를 배포하는 방식이 있을 듯하고,
+가장 좋은 것은 배포된 환경에서 일부 컴포넌트만 수정된 컴포넌트로 교체하는 방식이 존재하는 것이다.</p><p>공식 페이지 resource 카테고리 확인시, CI로 사용하는 예제에 대한 영상이 많다.</p><h3 id=코드-훑어보기>코드 훑어보기</h3><p>가장 먼저 K8s를 코드 수준으로 분석하기 위해 git 코드베이스를 펼쳐보았을 때 겪은 문제가 있었다. 코드를 어디서부터 확인해야 하는지 모르겠다는 점이다. K8s 레포의 구조는 다음과 같다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ ls
+</span></span><span style=display:flex><span>api    CHANGELOG     cluster  code-of-conduct.md  docs    go.sum   go.work.sum  LICENSE   logo      _output  OWNERS_ALIASES  plugin     SECURITY_CONTACTS  SUPPORT.md  third_party
+</span></span><span style=display:flex><span>build  CHANGELOG.md  cmd      CONTRIBUTING.md     go.mod  go.work  hack         LICENSES  Makefile  OWNERS   pkg             README.md  staging            test        vendor
+</span></span></code></pre></div><p><a href=https://github.com/golang-standards/project-layout/blob/master/README_ko.md target=_blank rel=noopener>golang의 표준 레포 레이아웃</a>은 해당 주소를 확인해보면 좋다. 공식적인 표준은 아니라는 점을 주의해야 한다.</p><p>위 게시글을 참고로 보았을 때, 코드를 확인할 때 가장 먼저 확인하면 좋은 영역은 역시 <code>cmd</code> 하위이다.</p><h4 id=cmd>cmd</h4><pre tabindex=0><code>$ ls
+clicheck                  dependencyverifier  genkubedocs         genutils    import-boss     kube-apiserver           kubectl-convert  kube-proxy      preferredimports
+cloud-controller-manager  fieldnamedocscheck  genman              genyaml     importverifier  kube-controller-manager  kubelet          kube-scheduler  prune-junit-xml
+dependencycheck           gendocs             genswaggertypedocs  gotemplate  kubeadm         kubectl                  kubemark         OWNERS          yamlfmt
+</code></pre><p>익숙한 컴포넌트와 익숙하지 않은 컴포넌트들이 동시에 눈에 띈다.
+예를 들면, kube 로 시작하는 컴포넌트들은 익숙하다. kubeadm, kube-apiserver, kube-controller-manager, kubectl, kubelet, kube-proxy, kube-scheduler 등등이다.</p><img src=/posts/images/kubernetes-deep-dive1/kubernetes-deep-dive-1.png class=center><p>쿠버네티스를 구성하는 핵심 컴포넌트들 모두가 하나의 레포에 모여 있다. 이를 모노레포 전략이라고 부른다. OpenStack은 기본적으로 여러 서비스에 대한 관리를 멀티 레포지토리로 처리한다. 예를 들면, Nova 코드의 원리를 확인하고 싶으면 Nova 레포지토리를 확인하면 된다.</p><p>눈에 익숙치 않은 컴포넌트 들도 존재한다. 이름으로 짐작컨데, 문서 작성이나 의존성 체크 등 프로젝트 관리에 도움이 되는 요소라고 추측한다.</p><p>이 수 많은 컴포넌트 중에, 쿠버네티스 구조에서 가장 중요하다고 생각이 되는 kube-apiserver 안을 살펴보자. 생각보다 아기자기한 구성이다. apiserver.go 와 app 폴더가 메인이고 특징적으로 .import-restrictions 파일이 존재한다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>ls -al
+</span></span><span style=display:flex><span>.  ..  apiserver.go  app  .import-restrictions  OWNERS
+</span></span></code></pre></div><p>apiserver.go 파일은 main 패키지의 역할이다. 일반적인 오픈소스들의 코드 시작부는 정말 간단한 것 같다. 추후 프로젝트를 시작할 때 고려해 볼만한 사항이다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#75715e>/*
+</span></span></span><span style=display:flex><span><span style=color:#75715e>Copyright 2014 The Kubernetes Authors.
+</span></span></span><span style=display:flex><span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);
+</span></span></span><span style=display:flex><span><span style=color:#75715e>you may not use this file except in compliance with the License.
+</span></span></span><span style=display:flex><span><span style=color:#75715e>You may obtain a copy of the License at
+</span></span></span><span style=display:flex><span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>    http://www.apache.org/licenses/LICENSE-2.0
+</span></span></span><span style=display:flex><span><span style=color:#75715e>
+</span></span></span><span style=display:flex><span><span style=color:#75715e>Unless required by applicable law or agreed to in writing, software
+</span></span></span><span style=display:flex><span><span style=color:#75715e>distributed under the License is distributed on an &#34;AS IS&#34; BASIS,
+</span></span></span><span style=display:flex><span><span style=color:#75715e>WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+</span></span></span><span style=display:flex><span><span style=color:#75715e>See the License for the specific language governing permissions and
+</span></span></span><span style=display:flex><span><span style=color:#75715e>limitations under the License.
+</span></span></span><span style=display:flex><span><span style=color:#75715e>*/</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// APIServer is the main API server and master for the cluster.</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// It is responsible for serving the cluster management API.</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>package</span> <span style=color:#a6e22e>main</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> (
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;os&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>_</span> <span style=color:#e6db74>&#34;time/tzdata&#34;</span> <span style=color:#75715e>// for timeZone support in CronJob</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;k8s.io/component-base/cli&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>_</span> <span style=color:#e6db74>&#34;k8s.io/component-base/logs/json/register&#34;</span>          <span style=color:#75715e>// for JSON log format registration</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>_</span> <span style=color:#e6db74>&#34;k8s.io/component-base/metrics/prometheus/clientgo&#34;</span> <span style=color:#75715e>// load all the prometheus client-go plugins</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>_</span> <span style=color:#e6db74>&#34;k8s.io/component-base/metrics/prometheus/version&#34;</span>  <span style=color:#75715e>// for version metric registration</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;k8s.io/kubernetes/cmd/kube-apiserver/app&#34;</span>
+</span></span><span style=display:flex><span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>main</span>() {
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>command</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>NewAPIServerCommand</span>()
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>code</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>cli</span>.<span style=color:#a6e22e>Run</span>(<span style=color:#a6e22e>command</span>)
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>os</span>.<span style=color:#a6e22e>Exit</span>(<span style=color:#a6e22e>code</span>)
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>핵심 로직은 <code>"k8s.io/kubernetes/cmd/kube-apiserver/app"</code> 쪽에 담겨 있음을 짐작할 수 있고, 프로그램의 시작이 cobra 기반의 cli tool로 되어 있다는 사실이 매력적이다. cobra 기반임을 알 수 있는 건 <code>"k8s.io/component-base/cli"</code> 쪽을 미리 확인했기 때문이다. 이를 별도의 component-base 경로의 cli 패키지로 정의했다는 것은 여러 프로젝트에서 공통적으로 사용하는 디자인이라고 생각할 수 있다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>package</span> <span style=color:#a6e22e>cli</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> (
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;fmt&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;os&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;github.com/spf13/cobra&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>cliflag</span> <span style=color:#e6db74>&#34;k8s.io/component-base/cli/flag&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;k8s.io/component-base/logs&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;k8s.io/klog/v2&#34;</span>
+</span></span><span style=display:flex><span>)
+</span></span></code></pre></div><h4 id=staging>staging</h4><p>자연스럽게 staging 폴더로 넘어가보자. <code>"k8s.io/component-base/cli"</code> 파일 경로는 staging/src 폴더 하위에 있었다. staging 폴더는 Kubernetes 코드베이스의 <strong>모듈화 및 재사용성</strong>을 위한 중요한 구조적 요소이다.</p><p>staging 폴더에 있는 코드는 Kubernetes 코드베이스 내에서 개발 및 테스트되지만, 최종적으로는 외부 리포지토리(예: <a href=https://github.com/kubernetes/client-go target=_blank rel=noopener>https://github.com/kubernetes/client-go</a>)로 <a href=https://github.com/kubernetes/publishing-bot target=_blank rel=noopener>퍼블리싱 봇</a>에 의해 복사된다.</p><p>Kubernetes 프로젝트는 staging 디렉토리에 정의된 모듈을 내부적으로 사용하며, Go 모듈의 replace 지시문을 활용하여 경로를 지정한다. 이를 통해 Kubernetes 프로젝트는 자체 코드를 의존성으로 처리하고, 외부에 독립적인 라이브러리로 제공할 수 있다.</p><p>staging 구조는 Kubernetes의 모노레포를 점진적으로 분리하여, 독립적인 마이크로 리포지토리로 전환하는 전략의 일부다. 이는 코드 재사용성과 커뮤니티 기여를 촉진하고, 특정 라이브러리의 업데이트가 Kubernetes 전체 코드베이스에 영향을 미치지 않도록 설계되었다.</p><p>관련한 전체적인 개발 프로세스는 다음과 같다.</p><ol><li>개발자가 Kubernetes 메인 리포지토리에 코드 변경(PR 생성).</li><li>staging 코드 변경 사항 감지:<ul><li>Publishing Bot이 변경을 감지하고, 동기화 규칙에 따라 작업 실행.</li></ul></li><li>외부 리포지토리로 코드 복사:<ul><li>rules.yaml에 지정된 대로 외부 리포지토리에 PR 생성.</li></ul></li><li>의존성 업데이트:<ul><li>관련 리포지토리 간 의존성을 업데이트하고, 테스트를 통해 검증.</li></ul></li></ol><p>꽤나 멋진 구조라고 생각한다.</p><h4 id=pkg>pkg</h4><p>cmd/kube-apiserver/.import-restrictions 를 체크해보면, k8s.io/kubernetes/pkg 항목이 존재하는 것을 볼 수 있다.</p><pre tabindex=0><code>rules:
+  - selectorRegexp: k8s[.]io/kubernetes
+    allowedPrefixes:
+      - k8s.io/kubernetes/cmd/kube-apiserver
+      - k8s.io/kubernetes/pkg
+      - k8s.io/kubernetes/plugin
+      - k8s.io/kubernetes/test/utils
+      - k8s.io/kubernetes/third_party
+</code></pre><p>pkg 폴더는 golang에서 흔히 사용되는 레포지토리 레이아웃 관점에서 <strong>내부 구현 세부사항</strong>과 <strong>공통 유틸리티</strong>를 담는 공간이지만, 근본적으로 외부 사용자가 사용할 수 있는 코드 세트이다. 즉, 이 폴더는 프로젝트 내부와 외부 모두에서 재사용 가능한 코드를 패키지 형태로 제공한다.</p><p>실제 사용 예시로 cmd/kube-apiserver/app/server.go 파일의 임포트 항목을 살펴보면 다음과 같다. 거의 대부분의 임포트 항목의 경로에 pkg 폴더가 함유 됨을 알 수 있다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#f92672>package</span> <span style=color:#a6e22e>app</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> (
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;context&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;fmt&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;net/url&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;os&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;github.com/spf13/cobra&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>apiextensionsv1</span> <span style=color:#e6db74>&#34;k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>utilerrors</span> <span style=color:#e6db74>&#34;k8s.io/apimachinery/pkg/util/errors&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>utilruntime</span> <span style=color:#e6db74>&#34;k8s.io/apimachinery/pkg/util/runtime&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;k8s.io/apiserver/pkg/admission&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>genericapifilters</span> <span style=color:#e6db74>&#34;k8s.io/apiserver/pkg/endpoints/filters&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>genericapiserver</span> <span style=color:#e6db74>&#34;k8s.io/apiserver/pkg/server&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;k8s.io/apiserver/pkg/server/egressselector&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>serverstorage</span> <span style=color:#e6db74>&#34;k8s.io/apiserver/pkg/server/storage&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>utilfeature</span> <span style=color:#e6db74>&#34;k8s.io/apiserver/pkg/util/feature&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;k8s.io/apiserver/pkg/util/notfoundhandler&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;k8s.io/apiserver/pkg/util/webhook&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>clientgoinformers</span> <span style=color:#e6db74>&#34;k8s.io/client-go/informers&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;k8s.io/client-go/rest&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>cliflag</span> <span style=color:#e6db74>&#34;k8s.io/component-base/cli/flag&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;k8s.io/component-base/cli/globalflag&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;k8s.io/component-base/featuregate&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;k8s.io/component-base/logs&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>logsapi</span> <span style=color:#e6db74>&#34;k8s.io/component-base/logs/api/v1&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>_</span> <span style=color:#e6db74>&#34;k8s.io/component-base/metrics/prometheus/workqueue&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;k8s.io/component-base/term&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>utilversion</span> <span style=color:#e6db74>&#34;k8s.io/component-base/version&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;k8s.io/component-base/version/verflag&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;k8s.io/klog/v2&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>aggregatorapiserver</span> <span style=color:#e6db74>&#34;k8s.io/kube-aggregator/pkg/apiserver&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;k8s.io/kubernetes/cmd/kube-apiserver/app/options&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;k8s.io/kubernetes/pkg/capabilities&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;k8s.io/kubernetes/pkg/controlplane&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>controlplaneapiserver</span> <span style=color:#e6db74>&#34;k8s.io/kubernetes/pkg/controlplane/apiserver&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#e6db74>&#34;k8s.io/kubernetes/pkg/controlplane/reconcilers&#34;</span>
+</span></span><span style=display:flex><span>	<span style=color:#a6e22e>kubeapiserveradmission</span> <span style=color:#e6db74>&#34;k8s.io/kubernetes/pkg/kubeapiserver/admission&#34;</span>
+</span></span><span style=display:flex><span>)
+</span></span></code></pre></div><p>golang을 다루다보면 패키지의 순환 의존성을 조심할 필요가 있다. 특정 패키지에서 호출(import)되는 패키지는, 자신을 호출하는 패키지를 호출 하면 안된다. 특히 모노레포 생태계인 K8s 생태계에서는 조심해야한 성질이며, 이러한 부분을 아마도 현명하게 컨트롤하고 있을 것이라 생각한다. <code>.import-restrictions</code> 가 그 노력 중 하나이다. <strong>빌드 프로세스에서 위반 여부를 자동으로 검증</strong> 한다고 한다.</p><p>또한, 패키지 간 호출의 변화는 코드 리뷰 프로세스를 통해 검증 된다. <strong>OWNERS 파일</strong> 에서는 패키지 간의 관리자를 정하고 있는데, 특정 디렉터리와 관련된 코드 변경은 해당 디렉터리의 전문가(Reviewer 또는 Approver)에 의해 검토되게 되는 시스템이다. 대표적으로 pkg/api/OWNERS 를 살펴보면 다음과 같다.</p><pre tabindex=0><code># See the OWNERS docs at https://go.k8s.io/owners
+
+# Disable inheritance as this is an api owners file
+options:
+  no_parent_owners: true
+filters:
+  &#34;.*&#34;:
+    approvers:
+      - api-approvers
+    reviewers:
+      - api-reviewers
+  # examples:
+  #   pkg/api/types.go
+  #   pkg/api/*/register.go
+  &#34;([^/]+/)?(register|types)\\.go$&#34;:
+    labels:
+      - kind/api-change
+</code></pre><p>패키지 구조는 가급적이면 2~3단계 이상의 폴더보다 더 깊게 생성되지 않는다. 또한 테스트 파일도 많이 작성해 둔다. kubernetes/pkg/api 경로를 예를 들면 이러하다.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ tree .
+</span></span><span style=display:flex><span>.
+</span></span><span style=display:flex><span>├── endpoints
+</span></span><span style=display:flex><span>│   └── testing
+</span></span><span style=display:flex><span>│       └── make.go
+</span></span><span style=display:flex><span>├── job
+</span></span><span style=display:flex><span>│   ├── warnings.go
+</span></span><span style=display:flex><span>│   └── warnings_test.go
+</span></span><span style=display:flex><span>├── legacyscheme
+</span></span><span style=display:flex><span>│   └── scheme.go
+</span></span><span style=display:flex><span>├── node
+</span></span><span style=display:flex><span>│   ├── util.go
+</span></span><span style=display:flex><span>│   └── util_test.go
+</span></span><span style=display:flex><span>├── OWNERS
+</span></span><span style=display:flex><span>├── persistentvolume
+</span></span><span style=display:flex><span>│   ├── util.go
+</span></span><span style=display:flex><span>│   └── util_test.go
+</span></span><span style=display:flex><span>├── persistentvolumeclaim
+</span></span><span style=display:flex><span>│   ├── OWNERS
+</span></span><span style=display:flex><span>│   ├── util.go
+</span></span><span style=display:flex><span>│   └── util_test.go
+</span></span><span style=display:flex><span>├── pod
+</span></span><span style=display:flex><span>│   ├── OWNERS
+</span></span><span style=display:flex><span>│   ├── testing
+</span></span><span style=display:flex><span>│   │   └── make.go
+</span></span><span style=display:flex><span>│   ├── util.go
+</span></span><span style=display:flex><span>│   ├── util_test.go
+</span></span><span style=display:flex><span>│   ├── warnings.go
+</span></span><span style=display:flex><span>│   └── warnings_test.go
+</span></span><span style=display:flex><span>├── service
+</span></span><span style=display:flex><span>│   ├── OWNERS
+</span></span><span style=display:flex><span>│   ├── testing
+</span></span><span style=display:flex><span>│   │   └── make.go
+</span></span><span style=display:flex><span>│   ├── util.go
+</span></span><span style=display:flex><span>│   ├── util_test.go
+</span></span><span style=display:flex><span>│   ├── warnings.go
+</span></span><span style=display:flex><span>│   └── warnings_test.go
+</span></span><span style=display:flex><span>├── servicecidr
+</span></span><span style=display:flex><span>│   ├── servicecidr.go
+</span></span><span style=display:flex><span>│   └── servicecidr_test.go
+</span></span><span style=display:flex><span>├── storage
+</span></span><span style=display:flex><span>│   ├── util.go
+</span></span><span style=display:flex><span>│   └── util_test.go
+</span></span><span style=display:flex><span>├── testing
+</span></span><span style=display:flex><span>│   ├── applyconfiguration_test.go
+</span></span><span style=display:flex><span>│   ├── backward_compatibility_test.go
+</span></span><span style=display:flex><span>│   ├── compat
+</span></span><span style=display:flex><span>│   │   └── compatibility_tester.go
+</span></span><span style=display:flex><span>│   ├── conversion.go
+</span></span><span style=display:flex><span>│   ├── conversion_test.go
+</span></span><span style=display:flex><span>│   ├── copy_test.go
+</span></span><span style=display:flex><span>│   ├── deep_copy_test.go
+</span></span><span style=display:flex><span>│   ├── defaulting_test.go
+</span></span><span style=display:flex><span>│   ├── doc.go
+</span></span><span style=display:flex><span>│   ├── fuzzer.go
+</span></span><span style=display:flex><span>│   ├── install.go
+</span></span><span style=display:flex><span>│   ├── meta_test.go
+</span></span><span style=display:flex><span>│   ├── node_example.json
+</span></span><span style=display:flex><span>│   ├── OWNERS
+</span></span><span style=display:flex><span>│   ├── replication_controller_example.json
+</span></span><span style=display:flex><span>│   ├── serialization_proto_test.go
+</span></span><span style=display:flex><span>│   ├── serialization_test.go
+</span></span><span style=display:flex><span>│   └── unstructured_test.go
+</span></span><span style=display:flex><span>└── v1
+</span></span><span style=display:flex><span>    ├── endpoints
+</span></span><span style=display:flex><span>    │   ├── util.go
+</span></span><span style=display:flex><span>    │   └── util_test.go
+</span></span><span style=display:flex><span>    ├── OWNERS
+</span></span><span style=display:flex><span>    ├── persistentvolume
+</span></span><span style=display:flex><span>    │   ├── util.go
+</span></span><span style=display:flex><span>    │   └── util_test.go
+</span></span><span style=display:flex><span>    ├── pod
+</span></span><span style=display:flex><span>    │   ├── util.go
+</span></span><span style=display:flex><span>    │   └── util_test.go
+</span></span><span style=display:flex><span>    ├── resource
+</span></span><span style=display:flex><span>    │   ├── helpers.go
+</span></span><span style=display:flex><span>    │   └── helpers_test.go
+</span></span><span style=display:flex><span>    └── service
+</span></span><span style=display:flex><span>        ├── util.go
+</span></span><span style=display:flex><span>        └── util_test.go
+</span></span></code></pre></div><h4 id=이외>이외</h4><p>위에서 살펴본 폴더 이외에도 test, hack, build, api, plugin 등등의 여러 폴더가 존재한다. 재미 삼아 api/openapi-spec/swagger.json 파일을 열어보면, 8만 줄에 가까운 엄청난 길의 파일도 만나볼 수 있다. ( 아마도 자동으로 생성될 것이라 예상한다 )</p><p>K8s는 탄생 10주년을 맞이하는 정말 방대한 프로젝트이다. 한 번에 모든 컴포넌트를 분석할 순 없다. 처음부터 코드를 분석하는 것은 아주 어려운 일이다. 거의 대부분의 경우 필요에 의해 코드를 찾아가는 것이 일반적이다. 그러다 우연히 처음 보는 영역에 발을 들이는 순간에 각 폴더 별로 존재하는 README.md 파일을 첫 지침서로서 활용하는 편이 좋겠다.</p><h3 id=정리>정리</h3><p>Kubernetes는 컨테이너 오케스트레이션을 넘어 분산 시스템의 다양한 요구를 충족시키는 플랫폼이다. 이번 글에서는 Kubernetes 코드베이스의 주요 구조를 살펴보았으며, cmd, staging, pkg 디렉터리의 역할과 목적을 분석했다. 이를 통해 Kubernetes 내부 구조를 이해하고, 필요에 따라 기능을 커스터마이징하거나 디버깅하는 데 활용할 수 있다.</p><p>Kubernetes를 제대로 이해하려면 코드 구조를 아는 것에서 그치지 않고, 클러스터가 실제로 동작하는 원리를 탐구해야 한다. 특히, “파드 생성 과정”은 Kubernetes의 핵심 기능 중 하나로, 클러스터의 주요 컴포넌트가 어떻게 상호작용하며 워크로드를 배포하는지를 보여주는 중요한 흐름이다.</p><p>다음 글에서는 Kubernetes의 파드 생성 과정을 다루며, 클러스터 내부에서 일어나는 동작 원리를 구체적으로 파악 해보고자 한다.</p></div><div class="row ps-3 pe-3"><div class="col-md-6 share-buttons"></div><div class="col-md-6 btn-improve-page"><a href=https://github.com/hugo-toha/hugo-toha.github.io/edit/main/content/posts/300.%20Study/301.%20Kubernetes%20deep-dive!/Hello,%20k8s%20Dev%20World!.md title="Improve this page" target=_blank rel=noopener><i class="fas fa-code-branch"></i>
+Improve this page</a></div></div><hr><div class="row next-prev-navigator"><div class="col-md-6 previous-article"><a href=/posts/200.-novel/ title="200. Novel" class="btn filled-button"><div><i class="fas fa-chevron-circle-left"></i> Prev</div><div class=next-prev-text>200. Novel</div></a></div><div class="col-md-6 next-article"><a href=/posts/300.-study/302.-openstack-deep-dive/ title="302. OpenStack deep-dive!" class="btn filled-button"><div>Next <i class="fas fa-chevron-circle-right"></i></div><div class=next-prev-text>302. OpenStack deep-dive!</div></a></div></div><hr></div></div></div><a id=scroll-to-top class=btn type=button data-bs-toggle=tooltip data-bs-placement=left title="Scroll to top"><i class="fas fa-chevron-circle-up"></i></a></section><section class=toc-section id=toc-section><div class=toc-holder><h5 class="text-center ps-3">Table of Contents</h5><hr><div class=toc><nav id=TableOfContents><ul><li><ul><li><a href=#쿠버네티스-딥-다이브를-시도하는-이유>쿠버네티스 딥 다이브를 시도하는 이유</a></li><li><a href=#개발-환경-구축>개발 환경 구축</a><ul><li><a href=#환경-셋업>환경 셋업</a></li><li><a href=#빌드>빌드</a><ul><li><a href=#golang-기반-환경>golang 기반 환경</a></li><li><a href=#docker-환경>docker 환경</a></li></ul></li><li><a href=#hacklocal-up-clustersh>hack/local-up-cluster.sh</a></li><li><a href=#kind>kind</a></li></ul></li><li><a href=#코드-훑어보기>코드 훑어보기</a><ul><li><a href=#cmd>cmd</a></li><li><a href=#staging>staging</a></li><li><a href=#pkg>pkg</a></li><li><a href=#이외>이외</a></li></ul></li><li><a href=#정리>정리</a></li></ul></li></ul></nav></div></div></section></div><footer id=footer class="container-fluid text-center align-content-center footer pb-2"><div class="container pt-5"><div class="row text-start"><div class="col-md-4 col-sm-12"><h5>Navigation</h5><ul><li class=nav-item><a class=smooth-scroll href=https://kubesy.com/#about>About</a></li><li class=nav-item><a class=smooth-scroll href=https://kubesy.com/#skills>Skills</a></li><li class=nav-item><a class=smooth-scroll href=https://kubesy.com/#education>Education</a></li><li class=nav-item><a class=smooth-scroll href=https://kubesy.com/#experiences>Experiences</a></li><li class=nav-item><a class=smooth-scroll href=https://kubesy.com/#recent-posts>Recent Posts</a></li></ul></div><div class="col-md-4 col-sm-12"><h5>Contact me:</h5><ul><li><a href=mailto:gkdlgkdl2040@gmail.com target=_blank rel=noopener><span><i class="fas fa-envelope"></i></span> <span>gkdlgkdl2040@gmail.com</span></a></li><li><a href=tel:+82%20010-4207-5229 target=_blank rel=noopener><span><i class="fas fa-phone-alt"></i></span> <span>+82 010-4207-5229</span></a></li></ul></div><div class="col-md-4 col-sm-12"><p>Stay up to date with email notification</p><form method=post action=https://blogtrottr.com><div class=form-group><input type=email class=form-control name=btr_email placeholder="Enter email"><br><input type=hidden name=btr_url value=https://kubesy.com//index.xml>
+<input type=hidden name=schedule_type value=1>
+<small id=emailHelp class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small>
+<button type=submit class="btn btn-info"> Submit</button></div></form></div></div></div><hr><div class=container><div class="row text-start"><div class=col-md-4><a id=theme href=https://github.com/hugo-toha/toha target=_blank rel=noopener><img src=/images/theme-logo_hu_b3360284c55cf72d.png alt="Toha Theme Logo">
+Toha</a></div><div class="col-md-4 text-center">© 2025 Copyright.</div><div class="col-md-4 text-end"><a id=hugo href=https://gohugo.io/ target=_blank rel=noopener>Powered by
+<img src=/images/hugo-logo.svg alt="Hugo Logo" height=18></a></div></div></div></footer><script src=/application.535eb0f1aa800085b38be4369dadb763d2d3b2c81513f53e0664819331cc8bca.js integrity="sha256-U16w8aqAAIWzi+Q2na23Y9LTssgVE/U+BmSBkzHMi8o=" defer></script></body></html>
