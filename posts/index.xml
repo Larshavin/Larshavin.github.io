@@ -1,4 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 양성연의 블로그</title><link>https://kubesy.com/posts/</link><description>Recent content in Posts on 양성연의 블로그</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 02 Jan 2025 23:11:20 +0900</lastBuildDate><atom:link href="https://kubesy.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Hello, k8s Dev World!</title><link>https://kubesy.com/posts/300.-study/301.-kubernetes-deep-dive/hello-k8s-dev-world/</link><pubDate>Thu, 02 Jan 2025 23:11:20 +0900</pubDate><guid>https://kubesy.com/posts/300.-study/301.-kubernetes-deep-dive/hello-k8s-dev-world/</guid><description>&lt;p>&lt;a href="https://github.com/kubernetes/kubernetes" target="_blank" rel="noopener">https://github.com/kubernetes/kubernetes&lt;/a>&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on 양성연의 블로그</title><link>https://kubesy.com/posts/</link><description>Recent content in Posts on 양성연의 블로그</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 14 May 2025 23:11:20 +0900</lastBuildDate><atom:link href="https://kubesy.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>2025-05-14</title><link>https://kubesy.com/posts/100.-diary/2025-05-14/</link><pubDate>Wed, 14 May 2025 23:11:20 +0900</pubDate><guid>https://kubesy.com/posts/100.-diary/2025-05-14/</guid><description>&lt;h3 id="하루-일지-요약">하루 일지 요약&lt;/h3>
+&lt;p>매일매일 일지를 써야겠다는 생각을 가지게 되었다.
+또 작심삼일이 될련지는 모르겠지만, 그래도 해보자.&lt;/p>
+&lt;h4 id="기상--숙면-시간">기상 / 숙면 시간&lt;/h4>
+&lt;ul>
+&lt;li>어제는 21시 쯤에 잠들었다.&lt;/li>
+&lt;li>오늘은 6시 50분에 일어났다.&lt;/li>
+&lt;/ul>
+&lt;h4 id="업무-및-공부-">업무 및 공부 ..&lt;/h4>
+&lt;ul>
+&lt;li>&lt;strong>클라우드 네이티브를 위한 데이터센터 네트워크 구축&lt;/strong> 이라는 책을 읽고 있다. 4장 까지 읽었다.
+과거의 네트워크 구성, 클로스(리프-스파인) 구조, NOS, OpenFlow 등 과거 어디선가 들어봤던, 하지만 흩어져 있던 개념들이 한 곳에 모이는 느낌이다.
+큰 역사의 흐름을 알게 되니, 현재의 기술들이 왜 그렇게 발전했는지 알 수 있었고 그래서 좀 더 이해가 잘 되는 것 같았다.
+예를 들어, STP 라는게 왜 필요했고, 지금은 왜 L3 기반 구조로 가는지 배울 수 있었다. 아직 좀 헷갈리긴 하지만.&lt;/li>
+&lt;li>기능 개발에 대한 프로세스에 대한 생각을 해봤다. 최근에 기존에 이미 개발되었던 코드를 도식화 하는 작업을 수행했는데,
+새로 만드는 기능 건에 대해서 모두가 구조적 도식화를 수행하는 게 필수적이라는 생각을 했다. 이미 유지보수에 어려움을 겪고 있는 상황에서 과거의 코드들을 도식화 하는 것은 아무래도 무리겠지만 말이다. 그리고 전체 솔루션의 구조적 변경에는 강력한 힘을 가진 아키텍쳐 혹은 메인테이너가 존재해야 하지 않을까도 생각했다.&lt;/li>
+&lt;li>5월의 절반이 지나가는 시점에서도 아직 업무가 구체화되지 않았다. 내가 하고 싶은 일이 정확히 뭔지 점점 더 아리쏭해진다.&lt;/li>
+&lt;li>Cilium을 통한 노드간 iBGP 통신에 성공하고 싶다. 다만 오늘 그쪽에 신경 쓸 여력이 없었다. Cilium Up&amp;amp;Running 이라는 책이 만들어지고 있다는 정보를 습득했다.&lt;/li>
+&lt;li>공룡책(운영체제) 책도 진행하지 못했다. 어쩌다보니 드문드문 손이 가게된다. 습관적으로 조금씩 읽어나가야 할텐데 말이다.&lt;/li>
+&lt;/ul>
+&lt;h4 id="이외의-생각">이외의 생각&lt;/h4>
+&lt;ul>
+&lt;li>더워진다. 반팔옷을 입어야겠다.&lt;/li>
+&lt;li>마음을 다잡아야 겠다. 요즘 너무 심란한 상태에 있었다. 보는 방향을 바꿔야겠다.&lt;/li>
+&lt;li>운동을 해야한다. 퇴근길은 되도록이면 걸어가자. 다만, 걸으면서 들을만한 좋은 팟캐스트가 있으면 좋겠다.&lt;/li>
+&lt;li>글쓰기에는 꾸준함이 필요하다.&lt;/li>
+&lt;li>미니서버 3대를 구성하고 싶다. 오픈스택 용 컨트롤러 + 컴퓨트 + 스토리지 구성으로 &amp;hellip;&lt;/li>
+&lt;/ul></description></item><item><title>Hello, k8s Dev World!</title><link>https://kubesy.com/posts/300.-study/301.-kubernetes-deep-dive/hello-k8s-dev-world/</link><pubDate>Thu, 02 Jan 2025 23:11:20 +0900</pubDate><guid>https://kubesy.com/posts/300.-study/301.-kubernetes-deep-dive/hello-k8s-dev-world/</guid><description>&lt;p>&lt;a href="https://github.com/kubernetes/kubernetes" target="_blank" rel="noopener">https://github.com/kubernetes/kubernetes&lt;/a>&lt;/p>
 &lt;h3 id="쿠버네티스-딥-다이브를-시도하는-이유">쿠버네티스 딥 다이브를 시도하는 이유&lt;/h3>
 &lt;p>시중에 쿠버네티스(이하 K8s)를 엔지니어 관점에서 활용하는 예시는 무궁무진하다. 배포, 모니터링, 유지 관리 등등 .
 특히 K8s 클러스터를 배포하는 것은 kubeadm, kubespray, k3s, k0s, kind, minikube 등등 엄청나게 방법이 다양하다.&lt;/p>
