@@ -40,7 +40,7 @@
 &lt;li>운동을 해야한다. 퇴근길은 되도록이면 걸어가자. 다만, 걸으면서 들을만한 좋은 팟캐스트가 있으면 좋겠다.&lt;/li>
 &lt;li>글쓰기에는 꾸준함이 필요하다.&lt;/li>
 &lt;li>미니서버 3대를 구성하고 싶다. 오픈스택 용 컨트롤러 + 컴퓨트 + 스토리지 구성으로 &amp;hellip;&lt;/li>
-&lt;/ul></description></item><item><title>1. Hello, k8s Dev World!</title><link>https://kubesy.com/posts/300.-study/301.-kubernetes-deep-dive/hello-k8s-dev-world/</link><pubDate>Thu, 02 Jan 2025 23:11:20 +0900</pubDate><guid>https://kubesy.com/posts/300.-study/301.-kubernetes-deep-dive/hello-k8s-dev-world/</guid><description>&lt;p>&lt;a href="https://github.com/kubernetes/kubernetes" target="_blank" rel="noopener">https://github.com/kubernetes/kubernetes&lt;/a>&lt;/p>
+&lt;/ul></description></item><item><title>1. Hello, k8s Dev World!</title><link>https://kubesy.com/posts/300.-study/301.-kubernetes-deep-dive/hello-k8s-dev-world/</link><pubDate>Wed, 14 May 2025 00:00:00 +0000</pubDate><guid>https://kubesy.com/posts/300.-study/301.-kubernetes-deep-dive/hello-k8s-dev-world/</guid><description>&lt;p>&lt;a href="https://github.com/kubernetes/kubernetes" target="_blank" rel="noopener">https://github.com/kubernetes/kubernetes&lt;/a>&lt;/p>
 &lt;h3 id="쿠버네티스-딥-다이브를-시도하는-이유">쿠버네티스 딥 다이브를 시도하는 이유&lt;/h3>
 &lt;p>시중에 쿠버네티스(이하 K8s)를 엔지니어 관점에서 활용하는 예시는 무궁무진하다. 배포, 모니터링, 유지 관리 등등 .
 특히 K8s 클러스터를 배포하는 것은 kubeadm, kubespray, k3s, k0s, kind, minikube 등등 엄청나게 방법이 다양하다.&lt;/p>
