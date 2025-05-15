@@ -1,12 +1,10 @@
 ---
-title: Hello, k8s Dev World!
+title: 1. Hello, k8s Dev World!
 date: 2025-01-02T23:11:20+09:00
 hero: images/hero/쿠버네티스가 무엇일까.png
 description: "쿠버네티스를 개발자 관점에서 바라보는 글입니다."
 menu:
   sidebar: 
-    name: Hello, k8s Dev World!
-    identifier: kubernetes-deep-dive-1
     weight: 1
     parent: kubernetes-deep-dive
 ---
@@ -32,7 +30,7 @@ https://github.com/kubernetes/kubernetes
 
 특히, Kubernetes는 복잡하고 정교하게 설계된 코드베이스를 가지고 있어, Go 언어의 고급 활용 사례를 학습하고, 효율적이고 확장 가능한 소프트웨어 설계를 탐구하기에 적합하다. 이를 통해 단순히 Kubernetes 자체의 동작 원리를 배우는 것뿐만 아니라, 대규모 오픈소스 프로젝트의 개발 및 운영 방식을 체득할 수 있다.
 
-쿠버네티스 생태계를 얼마나 깊은 수준으로 탐험할 수 있을까나 걱정이지만, 조심스러운 여정을 시작해보려 한다.
+내 실력으로 쿠버네티스 생태계를 얼마나 깊은 수준으로 탐험할 수 있을까 걱정이지만, 조심스러운 여정을 시작해보려 한다.
 
 ### 개발 환경 구축
 구체적인 방법은 다음 주소에서 확인할 수 있다. 
@@ -67,7 +65,7 @@ apiextensions-apiserver  e2e.test  go-runner  kube-aggregator  kube-controller-m
 e2e_node.test            ginkgo    kubeadm    kube-apiserver   kubectl                  kubelet          kubemark         kube-scheduler
 ```
 ##### docker 환경
-[hack/local-up-cluster.sh](https://github.com/kubernetes/community/blob/master/contributors/devel/running-locally.md) 문서를 따라하기에는 다음 방법을 사용한다.
+[hack/local-up-cluster.sh](https://github.com/kubernetes/community/blob/master/contributors/devel/running-locally.md) 문서를 따라하기 위해 다음 방법을 사용한다.
 ``` shell
 git clone https://github.com/kubernetes/kubernetes
 cd kubernetes
