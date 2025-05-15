@@ -1,6 +1,6 @@
 ---
 title: 1. Hello, k8s Dev World!
-date: 2025-01-02T23:11:20+09:00
+date: 2025-05-14
 hero: images/hero/쿠버네티스가 무엇일까.png
 description: "쿠버네티스를 개발자 관점에서 바라보는 글입니다."
 menu:
