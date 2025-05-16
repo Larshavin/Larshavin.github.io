@@ -17,4 +17,16 @@ class="center"
 &lt;p>안녕하세요.
 좋은 기회를 통해 최근 공부하고 있는 IT 기술인 쿠버네티스에 대해 소개 해드리고자 합니다.&lt;/p>
 &lt;h3 id="쿠버네티스">쿠버네티스?&lt;/h3>
-&lt;p>최근 NHN사의 클라우드 교육을 다녀왔었습니다. 클라우드는 이제 많은 사람이 쉽고 편하게 사용하는 기술이지요? 매킨토시를 쓰거나, 윈도우를 쓸 때 icloud, OneDrive등의 기능을 쓰시는 분이 많을테고, 구글에서도 구글 드라이브에 자료를 저장하는 등의 경험이 있으실 것 같습니다. 그런 클라우드 시장에서 주목하는 기술 중 하나가 쿠버네티스 입니다.&lt;/p></description></item></channel></rss>
+&lt;p>최근 NHN사의 클라우드 교육을 다녀왔었습니다. 클라우드는 이제 많은 사람이 쉽고 편하게 사용하는 기술이지요? 매킨토시를 쓰거나, 윈도우를 쓸 때 icloud, OneDrive등의 기능을 쓰시는 분이 많을테고, 구글에서도 구글 드라이브에 자료를 저장하는 등의 경험이 있으실 것 같습니다. 그런 클라우드 시장에서 주목하는 기술 중 하나가 쿠버네티스 입니다.&lt;/p></description></item><item><title>Harbor</title><link>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-cncf-landscape/1_harbor/</link><pubDate>Sun, 31 Jul 2022 00:00:00 +0000</pubDate><guid>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-cncf-landscape/1_harbor/</guid><description>&lt;h1 id="harbor">Harbor&lt;/h1>
+&lt;img src="https://kubesy.com/posts/images/cncf/harbor/0.png"
+class="center"
+>
+&lt;ul>
+&lt;li>
+&lt;p>참고자료&lt;/p>
+&lt;p>&lt;a href="https://happycloud-lee.tistory.com/165" target="_blank" rel="noopener">https://happycloud-lee.tistory.com/165&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://goharbor.io/docs/2.1.0/install-config/" target="_blank" rel="noopener">https://goharbor.io/docs/2.1.0/install-config/&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>쿠버네티스에서 파드를 생성할 때 필수적으로 필요로 하는 것이 바로 컨테이너 이미지 입니다. 컨테이너 이미지는 로컬에 저장할 수도 있고 &lt;a href="https://hub.docker.com" target="_blank" rel="noopener">도커 허브&lt;/a>와 같은 원격 환경을 이용할 수도 있습니다. 원격 환경이 다른 사람들에게 이미지를 공유하거나 할 때 편리하지만, 문제는 도커 허브 이용에 제한이 생겼다는 것 입니다. 특정 시간 동안 특정 횟수의 다운로드 제한이 있습니다.&lt;/p>
+&lt;p>유료 모델을 사용하는 것도 하나의 방법이지만, 그보다 무료 이미지 저장소를 로컬에 설치 하는 것이 더 바람직할 듯 합니다. Harbor는 그 목적에 아주 적합 합니다.&lt;/p></description></item></channel></rss>

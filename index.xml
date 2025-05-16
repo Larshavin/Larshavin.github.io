@@ -1,4 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>양성연의 블로그</title><link>https://kubesy.com/</link><description>Recent content on 양성연의 블로그</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 15 May 2025 09:45:00 +0900</lastBuildDate><atom:link href="https://kubesy.com/index.xml" rel="self" type="application/rss+xml"/><item><title>방치해두었던 hugo 블로그 최신화 경험</title><link>https://kubesy.com/posts/500.-tech_dev/%EA%B8%B0%ED%83%80/%EA%B8%B0%EC%88%A0-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%9C%A0%EC%A7%80%EB%B3%B4%EC%88%98/</link><pubDate>Thu, 15 May 2025 09:45:00 +0900</pubDate><guid>https://kubesy.com/posts/500.-tech_dev/%EA%B8%B0%ED%83%80/%EA%B8%B0%EC%88%A0-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%9C%A0%EC%A7%80%EB%B3%B4%EC%88%98/</guid><description/></item><item><title>2025-05-15</title><link>https://kubesy.com/posts/100.-diary/eng/2025-05-15/</link><pubDate>Thu, 15 May 2025 00:00:00 +0000</pubDate><guid>https://kubesy.com/posts/100.-diary/eng/2025-05-15/</guid><description>&lt;h3 id="하루-일지-요약">하루 일지 요약&lt;/h3>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>양성연의 블로그</title><link>https://kubesy.com/</link><description>Recent content on 양성연의 블로그</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 16 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://kubesy.com/index.xml" rel="self" type="application/rss+xml"/><item><title>2025-05-16</title><link>https://kubesy.com/posts/100.-diary/eng/2025-05-16/</link><pubDate>Fri, 16 May 2025 00:00:00 +0000</pubDate><guid>https://kubesy.com/posts/100.-diary/eng/2025-05-16/</guid><description>&lt;h3 id="하루-일지-요약">하루 일지 요약&lt;/h3>
+&lt;h4 id="기상--숙면-시간">기상 / 숙면 시간&lt;/h4>
+&lt;ul>
+&lt;li>어제는 술먹고 1시에 잠들었다.&lt;/li>
+&lt;li>오늘은 7시 35분에 일어났다. 숙취에 괴로워하며 &amp;hellip;&lt;/li>
+&lt;/ul>
+&lt;h4 id="업무-및-공부-">업무 및 공부 ..&lt;/h4>
+&lt;ul>
+&lt;li>(진행중)&lt;/li>
+&lt;li>앞으로 어떤 업무를 할 수 있는지(혹은 하고 싶은지) 요청하셔서, 정리해서 올려드렸다. 내 마음은 플랫폼 엔지니어링에 가까운 거 같다.&lt;/li>
+&lt;li>책 읽는 게 즐겁다.&lt;/li>
+&lt;/ul>
+&lt;h4 id="이외의-생각">이외의 생각&lt;/h4>
+&lt;ul>
+&lt;li>술은 안 먹는게 좋다.&lt;/li>
+&lt;li>밀린 집 청소가 필요하다.&lt;/li>
+&lt;/ul></description></item><item><title>방치해두었던 hugo 블로그 최신화 경험</title><link>https://kubesy.com/posts/500.-tech_dev/%EA%B8%B0%ED%83%80/%EA%B8%B0%EC%88%A0-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%9C%A0%EC%A7%80%EB%B3%B4%EC%88%98/</link><pubDate>Thu, 15 May 2025 09:45:00 +0900</pubDate><guid>https://kubesy.com/posts/500.-tech_dev/%EA%B8%B0%ED%83%80/%EA%B8%B0%EC%88%A0-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%9C%A0%EC%A7%80%EB%B3%B4%EC%88%98/</guid><description/></item><item><title>2025-05-15</title><link>https://kubesy.com/posts/100.-diary/eng/2025-05-15/</link><pubDate>Thu, 15 May 2025 00:00:00 +0000</pubDate><guid>https://kubesy.com/posts/100.-diary/eng/2025-05-15/</guid><description>&lt;h3 id="하루-일지-요약">하루 일지 요약&lt;/h3>
 &lt;h4 id="기상--숙면-시간">기상 / 숙면 시간&lt;/h4>
 &lt;ul>
 &lt;li>어제는 12시 반쯤 잠들었다.&lt;/li>
@@ -7,7 +23,7 @@
 &lt;h4 id="업무-및-공부-">업무 및 공부 ..&lt;/h4>
 &lt;ul>
 &lt;li>오픈 스택 관련 글을 더 많이 써봐야겠다는 생각을 했다.(&lt;a href="https://www.linkedin.com/posts/daewon-kim-80b1076b_%EC%B5%9C%EA%B7%BC%EC%97%90-%EC%A2%80-%EC%A7%88%EB%AC%B8%EC%9D%84-%EB%A7%8E%EC%9D%B4-%EC%A3%BC%EC%85%A8%EC%8A%B5%EB%8B%88%EB%8B%A4-%EC%98%A4%ED%94%88%EC%8A%A4%ED%83%9D-%EA%B5%90%EC%9C%A1%EC%9E%90%EB%A3%8C%EA%B0%80-%EC%9E%88%EB%82%98%EC%9A%94-activity-7328298813931061249-XDuS?utm_source=share&amp;amp;utm_medium=member_desktop&amp;amp;rcm=ACoAAEQdiIYBKymviVGUosvzr4p4D_brz1ikTyg" target="_blank" rel="noopener">https://www.linkedin.com/posts/daewon-kim-80b1076b_%EC%B5%9C%EA%B7%BC%EC%97%90-%EC%A2%80-%EC%A7%88%EB%AC%B8%EC%9D%84-%EB%A7%8E%EC%9D%B4-%EC%A3%BC%EC%85%A8%EC%8A%B5%EB%8B%88%EB%8B%A4-%EC%98%A4%ED%94%88%EC%8A%A4%ED%83%9D-%EA%B5%90%EC%9C%A1%EC%9E%90%EB%A3%8C%EA%B0%80-%EC%9E%88%EB%82%98%EC%9A%94-activity-7328298813931061249-XDuS?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAEQdiIYBKymviVGUosvzr4p4D_brz1ikTyg&lt;/a>)&lt;/li>
-&lt;li>&lt;/li>
+&lt;li>&lt;strong>클라우드 네이티브를 위한 데이터센터 네트워크 구축&lt;/strong> 5장을 읽었다. 라우팅 관련으로 BGP와 OSPF에 대한 내용을 다루고 있다. (구체적인 이론적 내용은 아니었지만) 간단한 특징이 서술되었고, 데이터센터에서 어떤 라우팅 방식을 선택해야하는 지에 대한 설명이 있었다. 결론적으로 BGP + EVPN 구성이 매력적인 것 같은데, 오픈스택 관점에서 OVN과 함께 동시 EVPN 활용이 가능한건가 궁금해졌다. gpt와의 대담에서는 아리쏭한 결과만 남았다. 6장이 네트워크 가상화 파트인데, 이 부분에서 약간의 해답이 나오지 않을까 기대 중이다.&lt;/li>
 &lt;/ul>
 &lt;h4 id="이외의-생각">이외의 생각&lt;/h4>
 &lt;ul>
@@ -67,4 +83,16 @@ class="center"
 &lt;p>안녕하세요.
 좋은 기회를 통해 최근 공부하고 있는 IT 기술인 쿠버네티스에 대해 소개 해드리고자 합니다.&lt;/p>
 &lt;h3 id="쿠버네티스">쿠버네티스?&lt;/h3>
-&lt;p>최근 NHN사의 클라우드 교육을 다녀왔었습니다. 클라우드는 이제 많은 사람이 쉽고 편하게 사용하는 기술이지요? 매킨토시를 쓰거나, 윈도우를 쓸 때 icloud, OneDrive등의 기능을 쓰시는 분이 많을테고, 구글에서도 구글 드라이브에 자료를 저장하는 등의 경험이 있으실 것 같습니다. 그런 클라우드 시장에서 주목하는 기술 중 하나가 쿠버네티스 입니다.&lt;/p></description></item></channel></rss>
+&lt;p>최근 NHN사의 클라우드 교육을 다녀왔었습니다. 클라우드는 이제 많은 사람이 쉽고 편하게 사용하는 기술이지요? 매킨토시를 쓰거나, 윈도우를 쓸 때 icloud, OneDrive등의 기능을 쓰시는 분이 많을테고, 구글에서도 구글 드라이브에 자료를 저장하는 등의 경험이 있으실 것 같습니다. 그런 클라우드 시장에서 주목하는 기술 중 하나가 쿠버네티스 입니다.&lt;/p></description></item><item><title>Harbor</title><link>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-cncf-landscape/1_harbor/</link><pubDate>Sun, 31 Jul 2022 00:00:00 +0000</pubDate><guid>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-cncf-landscape/1_harbor/</guid><description>&lt;h1 id="harbor">Harbor&lt;/h1>
+&lt;img src="https://kubesy.com/posts/images/cncf/harbor/0.png"
+class="center"
+>
+&lt;ul>
+&lt;li>
+&lt;p>참고자료&lt;/p>
+&lt;p>&lt;a href="https://happycloud-lee.tistory.com/165" target="_blank" rel="noopener">https://happycloud-lee.tistory.com/165&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://goharbor.io/docs/2.1.0/install-config/" target="_blank" rel="noopener">https://goharbor.io/docs/2.1.0/install-config/&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>쿠버네티스에서 파드를 생성할 때 필수적으로 필요로 하는 것이 바로 컨테이너 이미지 입니다. 컨테이너 이미지는 로컬에 저장할 수도 있고 &lt;a href="https://hub.docker.com" target="_blank" rel="noopener">도커 허브&lt;/a>와 같은 원격 환경을 이용할 수도 있습니다. 원격 환경이 다른 사람들에게 이미지를 공유하거나 할 때 편리하지만, 문제는 도커 허브 이용에 제한이 생겼다는 것 입니다. 특정 시간 동안 특정 횟수의 다운로드 제한이 있습니다.&lt;/p>
+&lt;p>유료 모델을 사용하는 것도 하나의 방법이지만, 그보다 무료 이미지 저장소를 로컬에 설치 하는 것이 더 바람직할 듯 합니다. Harbor는 그 목적에 아주 적합 합니다.&lt;/p></description></item></channel></rss>
