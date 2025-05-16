@@ -4,6 +4,6 @@ menu:
   sidebar: 
     name: etc
     identifier: etc
-    weight: 4
+    weight: 5
     parent: techndev
 ---

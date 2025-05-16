@@ -4,6 +4,6 @@ menu:
   sidebar: 
     name: Kolla-Ansible
     identifier: kolla-ansible
-    weight: 3
+    weight: 4
     parent: techndev
 ---
