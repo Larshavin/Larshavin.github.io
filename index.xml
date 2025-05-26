@@ -1,4 +1,32 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>양성연의 블로그</title><link>https://kubesy.com/</link><description>Recent content on 양성연의 블로그</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 22 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://kubesy.com/index.xml" rel="self" type="application/rss+xml"/><item><title>2025-05-22</title><link>https://kubesy.com/posts/100.-diary/eng/2025-05-22/</link><pubDate>Thu, 22 May 2025 00:00:00 +0000</pubDate><guid>https://kubesy.com/posts/100.-diary/eng/2025-05-22/</guid><description>&lt;h3 id="하루-일지-요약">하루 일지 요약&lt;/h3>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>양성연의 블로그</title><link>https://kubesy.com/</link><description>Recent content on 양성연의 블로그</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 26 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://kubesy.com/index.xml" rel="self" type="application/rss+xml"/><item><title>2025-05-26</title><link>https://kubesy.com/posts/100.-diary/eng/2025-05-26/</link><pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate><guid>https://kubesy.com/posts/100.-diary/eng/2025-05-26/</guid><description>&lt;h3 id="하루-일지-요약">하루 일지 요약&lt;/h3>
+&lt;h4 id="기상--숙면-시간">기상 / 숙면 시간&lt;/h4>
+&lt;ul>
+&lt;li>말도 안 되는 기상 패턴이었다.&lt;/li>
+&lt;li>저녁 8시 ~ 12 시 잤다가, 일어나서 4시까지 깨어 있다가 다시 7시 45분까지 잤다.&lt;/li>
+&lt;/ul>
+&lt;h4 id="업무-및-공부-">업무 및 공부 ..&lt;/h4>
+&lt;ul>
+&lt;li>주말에 OVN 발표 ppt를 만들었다. 깊이는 얕지만, 전반적인 흐름을 파악하는데 도움이 되면 좋겠다.
+&lt;ul>
+&lt;li>ppt를 블로그에 올리는 법이 있을까? hugo 커스텀이 필요할련지..&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>점심에 직장 동료분 덕에 ceph 구조를 아주 살짝 이해했다.
+&lt;ul>
+&lt;li>PG 개념이 아직 살짝 이해가 되지 않는다.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>회사에서 쉘스크립트 수정하는 작업에 집중했다.&lt;/li>
+&lt;li>퇴근 한 두 시간 전에 스토리지 책을 읽었다.&lt;/li>
+&lt;/ul>
+&lt;h4 id="이외의-생각">이외의 생각&lt;/h4>
+&lt;ul>
+&lt;li>저녁 먹고 집에 오니 10시가 가까웠다.&lt;/li>
+&lt;li>오늘은 공부 부담을 줄이고 잘거다&lt;/li>
+&lt;li>경험&amp;hellip; 경험이 필요하다.&lt;/li>
+&lt;li>내일은 퇴근 후에 풋살을 하러 간다. 옷을 챙겨야 한다.&lt;/li>
+&lt;li>오퍼레이터 패턴 구현할 사이드 프로젝트가 필요하다!&lt;/li>
+&lt;/ul></description></item><item><title>2025-05-22</title><link>https://kubesy.com/posts/100.-diary/eng/2025-05-22/</link><pubDate>Thu, 22 May 2025 00:00:00 +0000</pubDate><guid>https://kubesy.com/posts/100.-diary/eng/2025-05-22/</guid><description>&lt;h3 id="하루-일지-요약">하루 일지 요약&lt;/h3>
 &lt;h4 id="기상--숙면-시간">기상 / 숙면 시간&lt;/h4>
 &lt;ul>
 &lt;li>새벽 1시에 잠들었다.&lt;/li>
