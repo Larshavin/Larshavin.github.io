@@ -1,4 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>100. Diary on 양성연의 블로그</title><link>https://kubesy.com/posts/100.-diary/</link><description>Recent content in 100. Diary on 양성연의 블로그</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 12 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://kubesy.com/posts/100.-diary/index.xml" rel="self" type="application/rss+xml"/><item><title>한동안 하루 일지가 없었던 이유</title><link>https://kubesy.com/posts/100.-diary/eng/2025-07-13/</link><pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate><guid>https://kubesy.com/posts/100.-diary/eng/2025-07-13/</guid><description>&lt;h3 id="한동안-하루-일지가-없었던-이유">한동안 하루 일지가 없었던 이유&lt;/h3>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>100. Diary on 양성연의 블로그</title><link>https://kubesy.com/posts/100.-diary/</link><description>Recent content in 100. Diary on 양성연의 블로그</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 21 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://kubesy.com/posts/100.-diary/index.xml" rel="self" type="application/rss+xml"/><item><title>2025-07-21</title><link>https://kubesy.com/posts/100.-diary/eng/2025-07-21/</link><pubDate>Mon, 21 Jul 2025 00:00:00 +0000</pubDate><guid>https://kubesy.com/posts/100.-diary/eng/2025-07-21/</guid><description>&lt;h3 id="하루-일지">하루 일지&lt;/h3>
+&lt;h4 id="기상--숙면-시간">기상 / 숙면 시간&lt;/h4>
+&lt;ul>
+&lt;li>새벽 2시에 잠들었다. (강철의 연금술사 때문에 &amp;hellip; )&lt;/li>
+&lt;li>아침 7시 15분에 일어났다.&lt;/li>
+&lt;/ul>
+&lt;h4 id="업무-및-공부">업무 및 공부&lt;/h4>
+&lt;ul>
+&lt;li>퇴사 선언을 한지 일주일이 지났다. 지난 일주일 동안은 인수인계를 위한 자료 정리를 수행했다.
+오늘은 새로운 직장에서의 폐쇄망 환경에 적응하기 위해 vscode 의존성을 줄여보자 했고, 예전부터 찾아보던 nvim을 구축해보는 연습을 했다.
+space 바를 기반으로 창을 키고 닫을 수 있다는 점이 매력적인 부분이고, 내 나름대로의 키 바인딩도 가능한 것 같다.
+그리고 golang 등의 개발에서 유용한 플러그인이 많다는 점에서 잘만 세팅해놓는다면, vscode 보다 훨씬 가볍고 편한 에디터가 될 것 같다.&lt;/li>
+&lt;li>go wails 를 살짝 조사해봤다. 가볍게 사용할 만한 프로그램 몇 개를 만들어보려고 한다. 가장 첫 번째 아이디어는 쿠버네티스 매니페스트 쉽게 만들기 툴이다.
+vue.js 를 사용할 건데, 예전에 하던대로 primevue 까지 얹을 예정이다.
+다만, golang 과 프론트엔드가 엮이는 부분을 어떤식으로 구현 하는지가 조금 궁금하다. 일반적인 로직은 자바스크립트 수준으로도 구현할 수 있지 않은가 싶기도 하기 때문이다.&lt;/li>
+&lt;/ul>
+&lt;h4 id="이외의-생각">이외의 생각&lt;/h4>
+&lt;ul>
+&lt;li>내일은 오후 반차인데, 꽤 바쁜 하루가 예정되어 있다. 우선 이직 확정된 곳을 한 번 들렸다가 돌아와야 한다는 점에서 쉽지 않을 여정인 것이 첫 번째요, 중간에 한 시간 정도 화상 면접도 잡혀있다.&lt;/li>
+&lt;li>날이 확실히 덥다.&lt;/li>
+&lt;li>목요일을 장비 반입을 위해서 적어도 내일은 컴퓨터를 주문해놓아야 한다.&lt;/li>
+&lt;li>25년&amp;hellip; 왜 이렇게 빨리 흘러가는지 원망스럽다.&lt;/li>
+&lt;/ul></description></item><item><title>한동안 하루 일지가 없었던 이유</title><link>https://kubesy.com/posts/100.-diary/eng/2025-07-13/</link><pubDate>Sat, 12 Jul 2025 00:00:00 +0000</pubDate><guid>https://kubesy.com/posts/100.-diary/eng/2025-07-13/</guid><description>&lt;h3 id="한동안-하루-일지가-없었던-이유">한동안 하루 일지가 없었던 이유&lt;/h3>
 &lt;p>5월 26일 이후로 하루 일지를 작성하지 못했다. 쇄골 골절로 한 동안 오른팔을 사용할 수 없었기 때문이다.&lt;/p>
 &lt;p>한참 더워지기 시작하던 5월 29일 목요일이었다.
 회사 연구소 운동회에서 100m 달리기를 하다가, 왼쪽 허벅지에 햄스트링이 쪽에 경련이 일어나면서 넘어졌다. 당시에 느낌을 기억해보면, 누군가 내 왼쪽 허벅지를 잡아당기는 듯한 느낌이 들었다.
