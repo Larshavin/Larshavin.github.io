@@ -1,32 +1,34 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>500. Tech &amp; Dev on 양성연의 블로그</title><link>https://kubesy.com/posts/500.-tech_dev/</link><description>Recent content in 500. Tech &amp; Dev on 양성연의 블로그</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 15 May 2025 09:45:00 +0900</lastBuildDate><atom:link href="https://kubesy.com/posts/500.-tech_dev/index.xml" rel="self" type="application/rss+xml"/><item><title>방치해두었던 hugo 블로그 최신화 경험</title><link>https://kubesy.com/posts/500.-tech_dev/%EA%B8%B0%ED%83%80/%EA%B8%B0%EC%88%A0-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%9C%A0%EC%A7%80%EB%B3%B4%EC%88%98/</link><pubDate>Thu, 15 May 2025 09:45:00 +0900</pubDate><guid>https://kubesy.com/posts/500.-tech_dev/%EA%B8%B0%ED%83%80/%EA%B8%B0%EC%88%A0-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%9C%A0%EC%A7%80%EB%B3%B4%EC%88%98/</guid><description/></item><item><title>k8s operator 패턴 구현 (Operator Framework)</title><link>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C-%EA%B0%9C%EB%B0%9C/operator-framework/</link><pubDate>Sun, 10 Nov 2024 21:57:41 +0900</pubDate><guid>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C-%EA%B0%9C%EB%B0%9C/operator-framework/</guid><description>&lt;h2 id="개요-">개요 :&lt;/h2>
-&lt;p>&lt;a href="https://operatorframework.io/" target="_blank" rel="noopener">https://operatorframework.io/&lt;/a>&lt;/p>
-&lt;p>Red Hat이 주도하는 오픈소스 프로젝트로, 오퍼레이터 개발을 단순화하고 자동화하기 위한 다양한 도구와 라이브러리를 제공합니다. Operator SDK는 Kubebuilder 기반으로 만들어졌지만, Helm, Ansible 등 다양한 언어와 프레임워크를 지원합니다.
-또한 레드햇이 주도하여 개발 중으로 보이는 openstack operator 프로젝트에 사용되었습니다.&lt;/p>
-&lt;p>쿠버네티스의 오퍼레이터와 오퍼레이터 패턴은 공식 문서 &lt;a href="https://kubernetes.io/ko/docs/concepts/extend-kubernetes/operator/" target="_blank" rel="noopener">https://kubernetes.io/ko/docs/concepts/extend-kubernetes/operator/&lt;/a>에 정리되어 있습니다.&lt;/p>
-&lt;blockquote>
-&lt;p>오퍼레이터(Operator)는 사용자 정의 리소스를 사용하여 애플리케이션 및 해당 컴포넌트를 관리하는 쿠버네티스의 소프트웨어 익스텐션이다. 오퍼레이터는 쿠버네티스 원칙, 특히 컨트롤 루프를 따른다.&lt;/p>&lt;/blockquote>
-&lt;p>쿠버네티스 코드 자체를 수정하지 않고 기능을 확대한다는 점에서 큰 이점을 가지고 있습니다. 이미 cncf 의 많은 프로젝트들이 해당 기법을 사용하여 기능을 제공하고 있습니다. CKA 시험에서도 24년 11월 25일 이후부터 시험항목에 관련 내용이 추가됩니다.&lt;/p></description></item><item><title>쿠버네티스가 뭐지 2</title><link>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-%EA%B8%B0%EB%B3%B8/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4%EA%B0%80-%EB%AD%90%EC%A7%802/</link><pubDate>Thu, 23 Feb 2023 00:00:00 +0000</pubDate><guid>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-%EA%B8%B0%EB%B3%B8/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4%EA%B0%80-%EB%AD%90%EC%A7%802/</guid><description>&lt;h3 id="쿠버네티스-2-msa">쿠버네티스 2 (MSA)&lt;/h3>
-&lt;blockquote>
-&lt;p>마이크로서비스 아키텍처가 주목받기 이전부터 기업 환경에서는 중복되는 프로세스나 업무들을 하나의 서비스 단위로 개발하여 각 서비스는 호출 가능한 상태로 개발하자는 노력이 계속되어 왔다. 이는 서비스의 생성과 활용을 높여서 비즈니스 환경 변화와 업무 변화에 민첩하게 대응할 수 있는 아키텍처를 갖추기 위함이다(박성훈 2018, 15)&lt;/p>&lt;/blockquote>
-&lt;p>&lt;img src="https://kubesy.com/posts/images/%ec%bf%a0%eb%b2%84%eb%84%a4%ed%8b%b0%ec%8a%a4%ea%b0%80%20%eb%ac%b4%ec%97%87%ec%9d%bc%ea%b9%8c/2_0.png"
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>500. Tech &amp; Dev on 양성연의 블로그</title><link>https://kubesy.com/posts/500.-tech_dev/</link><description>Recent content in 500. Tech &amp; Dev on 양성연의 블로그</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 15 May 2025 09:45:00 +0900</lastBuildDate><atom:link href="https://kubesy.com/posts/500.-tech_dev/index.xml" rel="self" type="application/rss+xml"/><item><title>방치해두었던 hugo 블로그 최신화 경험</title><link>https://kubesy.com/posts/500.-tech_dev/%EA%B8%B0%ED%83%80/%EA%B8%B0%EC%88%A0-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%9C%A0%EC%A7%80%EB%B3%B4%EC%88%98/</link><pubDate>Thu, 15 May 2025 09:45:00 +0900</pubDate><guid>https://kubesy.com/posts/500.-tech_dev/%EA%B8%B0%ED%83%80/%EA%B8%B0%EC%88%A0-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EC%9C%A0%EC%A7%80%EB%B3%B4%EC%88%98/</guid><description/></item><item><title>k8s operator 패턴 구현 (Operator Framework)</title><link>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C-%EA%B0%9C%EB%B0%9C/operator-framework/</link><pubDate>Sun, 10 Nov 2024 21:57:41 +0900</pubDate><guid>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C-%EA%B0%9C%EB%B0%9C/operator-framework/</guid><description>&lt;h2 id="개요-"&gt;개요 :&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://operatorframework.io/" target="_blank" rel="noopener"&gt;https://operatorframework.io/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Red Hat이 주도하는 오픈소스 프로젝트로, 오퍼레이터 개발을 단순화하고 자동화하기 위한 다양한 도구와 라이브러리를 제공합니다. Operator SDK는 Kubebuilder 기반으로 만들어졌지만, Helm, Ansible 등 다양한 언어와 프레임워크를 지원합니다.
+또한 레드햇이 주도하여 개발 중으로 보이는 openstack operator 프로젝트에 사용되었습니다.&lt;/p&gt;
+&lt;p&gt;쿠버네티스의 오퍼레이터와 오퍼레이터 패턴은 공식 문서 &lt;a href="https://kubernetes.io/ko/docs/concepts/extend-kubernetes/operator/" target="_blank" rel="noopener"&gt;https://kubernetes.io/ko/docs/concepts/extend-kubernetes/operator/&lt;/a&gt;에 정리되어 있습니다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;오퍼레이터(Operator)는 사용자 정의 리소스를 사용하여 애플리케이션 및 해당 컴포넌트를 관리하는 쿠버네티스의 소프트웨어 익스텐션이다. 오퍼레이터는 쿠버네티스 원칙, 특히 컨트롤 루프를 따른다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;쿠버네티스 코드 자체를 수정하지 않고 기능을 확대한다는 점에서 큰 이점을 가지고 있습니다. 이미 cncf 의 많은 프로젝트들이 해당 기법을 사용하여 기능을 제공하고 있습니다. CKA 시험에서도 24년 11월 25일 이후부터 시험항목에 관련 내용이 추가됩니다.&lt;/p&gt;</description></item><item><title>쿠버네티스가 뭐지 2</title><link>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-%EA%B8%B0%EB%B3%B8/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4%EA%B0%80-%EB%AD%90%EC%A7%802/</link><pubDate>Thu, 23 Feb 2023 00:00:00 +0000</pubDate><guid>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-%EA%B8%B0%EB%B3%B8/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4%EA%B0%80-%EB%AD%90%EC%A7%802/</guid><description>&lt;h3 id="쿠버네티스-2-msa"&gt;쿠버네티스 2 (MSA)&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;마이크로서비스 아키텍처가 주목받기 이전부터 기업 환경에서는 중복되는 프로세스나 업무들을 하나의 서비스 단위로 개발하여 각 서비스는 호출 가능한 상태로 개발하자는 노력이 계속되어 왔다. 이는 서비스의 생성과 활용을 높여서 비즈니스 환경 변화와 업무 변화에 민첩하게 대응할 수 있는 아키텍처를 갖추기 위함이다(박성훈 2018, 15)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="https://kubesy.com/posts/images/%ec%bf%a0%eb%b2%84%eb%84%a4%ed%8b%b0%ec%8a%a4%ea%b0%80%20%eb%ac%b4%ec%97%87%ec%9d%bc%ea%b9%8c/2_0.png"
 class="center"
->
-출처 : &lt;strong>&lt;a href="https://www.bing.com/ck/a?!&amp;amp;&amp;amp;p=9ca213ca31e4da74JmltdHM9MTY3NzExMDQwMCZpZ3VpZD0zODY4NDk3ZS04NmIyLTY5MzUtMjYwMC01OGUwODc5YTY4YTkmaW5zaWQ9NTE3OA&amp;amp;ptn=3&amp;amp;hsh=3&amp;amp;fclid=3868497e-86b2-6935-2600-58e0879a68a9&amp;amp;psq=%ec%bf%a0%eb%b2%84%eb%84%a4%ed%8b%b0%ec%8a%a4&amp;#43;%eb%8f%84%ec%bb%a4&amp;#43;%ec%b1%85&amp;amp;u=a1aHR0cDovL3d3dy55ZXMyNC5jb20vUHJvZHVjdC9Hb29kcy8xMDIwOTk0MTQ&amp;amp;ntb=1" target="_blank" rel="noopener">컨테이너 인프라 환경 구축을 위한 쿠버네티스&lt;/a>&lt;/strong>&lt;/p>
-&lt;p>코드에 기능 하나를 추가하기 위해서 코드 베이스 전체를 뒤적거리며 일일히 수정하는 경험. 모두들 이런 경험을 해보신 적 있으시지 않으신가요? 비즈니스 환경 변화와 업무 변화에 민첩하게 대응하는 것은 서비스 업계에선 매우 중요한 부분일 것입니다. 하지만 코드베이스가 점점 쌓여 갈수록 작은 변화 하나에도 엄청난 노력을 요하게 됩니다.&lt;/p></description></item><item><title>쿠버네티스가 뭐지 1</title><link>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-%EA%B8%B0%EB%B3%B8/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4%EA%B0%80-%EB%AD%90%EC%A7%80/</link><pubDate>Sun, 11 Sep 2022 23:11:20 +0900</pubDate><guid>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-%EA%B8%B0%EB%B3%B8/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4%EA%B0%80-%EB%AD%90%EC%A7%80/</guid><description>&lt;p>22년도에 작성했던, 일반인을 위한 쿠버네티스 소개글입니다&amp;hellip; 배운지 몇달 안 된 상태에서 썼던 글이라 각종 (이상한) 추상적인 표현이 많습니다.&lt;/p>
-&lt;hr>
-&lt;p>안녕하세요.
-좋은 기회를 통해 최근 공부하고 있는 IT 기술인 쿠버네티스에 대해 소개 해드리고자 합니다.&lt;/p>
-&lt;h3 id="쿠버네티스">쿠버네티스?&lt;/h3>
-&lt;p>최근 NHN사의 클라우드 교육을 다녀왔었습니다. 클라우드는 이제 많은 사람이 쉽고 편하게 사용하는 기술이지요? 매킨토시를 쓰거나, 윈도우를 쓸 때 icloud, OneDrive등의 기능을 쓰시는 분이 많을테고, 구글에서도 구글 드라이브에 자료를 저장하는 등의 경험이 있으실 것 같습니다. 그런 클라우드 시장에서 주목하는 기술 중 하나가 쿠버네티스 입니다.&lt;/p></description></item><item><title>Harbor</title><link>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-cncf-landscape/1_harbor/</link><pubDate>Sun, 31 Jul 2022 00:00:00 +0000</pubDate><guid>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-cncf-landscape/1_harbor/</guid><description>&lt;h1 id="harbor">Harbor&lt;/h1>
+&gt;
+출처 : &lt;strong&gt;&lt;a href="https://www.bing.com/ck/a?!&amp;amp;&amp;amp;p=9ca213ca31e4da74JmltdHM9MTY3NzExMDQwMCZpZ3VpZD0zODY4NDk3ZS04NmIyLTY5MzUtMjYwMC01OGUwODc5YTY4YTkmaW5zaWQ9NTE3OA&amp;amp;ptn=3&amp;amp;hsh=3&amp;amp;fclid=3868497e-86b2-6935-2600-58e0879a68a9&amp;amp;psq=%ec%bf%a0%eb%b2%84%eb%84%a4%ed%8b%b0%ec%8a%a4&amp;#43;%eb%8f%84%ec%bb%a4&amp;#43;%ec%b1%85&amp;amp;u=a1aHR0cDovL3d3dy55ZXMyNC5jb20vUHJvZHVjdC9Hb29kcy8xMDIwOTk0MTQ&amp;amp;ntb=1" target="_blank" rel="noopener"&gt;컨테이너 인프라 환경 구축을 위한 쿠버네티스&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;코드에 기능 하나를 추가하기 위해서 코드 베이스 전체를 뒤적거리며 일일히 수정하는 경험. 모두들 이런 경험을 해보신 적 있으시지 않으신가요? 비즈니스 환경 변화와 업무 변화에 민첩하게 대응하는 것은 서비스 업계에선 매우 중요한 부분일 것입니다. 하지만 코드베이스가 점점 쌓여 갈수록 작은 변화 하나에도 엄청난 노력을 요하게 됩니다.&lt;/p&gt;</description></item><item><title>쿠버네티스가 뭐지 1</title><link>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-%EA%B8%B0%EB%B3%B8/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4%EA%B0%80-%EB%AD%90%EC%A7%80/</link><pubDate>Sun, 11 Sep 2022 23:11:20 +0900</pubDate><guid>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-%EA%B8%B0%EB%B3%B8/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4%EA%B0%80-%EB%AD%90%EC%A7%80/</guid><description>&lt;p&gt;22년도에 작성했던, 일반인을 위한 쿠버네티스 소개글입니다&amp;hellip; 배운지 몇달 안 된 상태에서 썼던 글이라 각종 (이상한) 추상적인 표현이 많습니다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;안녕하세요.
+좋은 기회를 통해 최근 공부하고 있는 IT 기술인 쿠버네티스에 대해 소개 해드리고자 합니다.&lt;/p&gt;
+&lt;h3 id="쿠버네티스"&gt;쿠버네티스?&lt;/h3&gt;
+&lt;p&gt;최근 NHN사의 클라우드 교육을 다녀왔었습니다. 클라우드는 이제 많은 사람이 쉽고 편하게 사용하는 기술이지요? 매킨토시를 쓰거나, 윈도우를 쓸 때 icloud, OneDrive등의 기능을 쓰시는 분이 많을테고, 구글에서도 구글 드라이브에 자료를 저장하는 등의 경험이 있으실 것 같습니다. 그런 클라우드 시장에서 주목하는 기술 중 하나가 쿠버네티스 입니다.&lt;/p&gt;</description></item><item><title>Harbor</title><link>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-cncf-landscape/1_harbor/</link><pubDate>Sun, 31 Jul 2022 00:00:00 +0000</pubDate><guid>https://kubesy.com/posts/500.-tech_dev/%EC%BF%A0%EB%B2%84%EB%84%A4%ED%8B%B0%EC%8A%A4-cncf-landscape/1_harbor/</guid><description>&lt;h1 id="harbor"&gt;Harbor&lt;/h1&gt;
 &lt;img src="https://kubesy.com/posts/images/cncf/harbor/0.png"
 class="center"
->
-&lt;ul>
-&lt;li>
-&lt;p>참고자료&lt;/p>
-&lt;p>&lt;a href="https://happycloud-lee.tistory.com/165" target="_blank" rel="noopener">https://happycloud-lee.tistory.com/165&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://goharbor.io/docs/2.1.0/install-config/" target="_blank" rel="noopener">https://goharbor.io/docs/2.1.0/install-config/&lt;/a>&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;p>쿠버네티스에서 파드를 생성할 때 필수적으로 필요로 하는 것이 바로 컨테이너 이미지 입니다. 컨테이너 이미지는 로컬에 저장할 수도 있고 &lt;a href="https://hub.docker.com" target="_blank" rel="noopener">도커 허브&lt;/a>와 같은 원격 환경을 이용할 수도 있습니다. 원격 환경이 다른 사람들에게 이미지를 공유하거나 할 때 편리하지만, 문제는 도커 허브 이용에 제한이 생겼다는 것 입니다. 특정 시간 동안 특정 횟수의 다운로드 제한이 있습니다.&lt;/p>
-&lt;p>유료 모델을 사용하는 것도 하나의 방법이지만, 그보다 무료 이미지 저장소를 로컬에 설치 하는 것이 더 바람직할 듯 합니다. Harbor는 그 목적에 아주 적합 합니다.&lt;/p></description></item></channel></rss>
+&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;참고자료&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://happycloud-lee.tistory.com/165" target="_blank" rel="noopener"&gt;https://happycloud-lee.tistory.com/165&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://goharbor.io/docs/2.1.0/install-config/" target="_blank" rel="noopener"&gt;https://goharbor.io/docs/2.1.0/install-config/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;쿠버네티스에서 파드를 생성할 때 필수적으로 필요로 하는 것이 바로 컨테이너 이미지 입니다. 컨테이너 이미지는 로컬에 저장할 수도 있고 &lt;a href="https://hub.docker.com" target="_blank" rel="noopener"&gt;도커 허브&lt;/a&gt;와 같은 원격 환경을 이용할 수도 있습니다. 원격 환경이 다른 사람들에게 이미지를 공유하거나 할 때 편리하지만, 문제는 도커 허브 이용에 제한이 생겼다는 것 입니다. 특정 시간 동안 특정 횟수의 다운로드 제한이 있습니다.&lt;/p&gt;
+&lt;p&gt;유료 모델을 사용하는 것도 하나의 방법이지만, 그보다 무료 이미지 저장소를 로컬에 설치 하는 것이 더 바람직할 듯 합니다. Harbor는 그 목적에 아주 적합 합니다.&lt;/p&gt;</description></item></channel></rss>
